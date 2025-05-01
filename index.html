@@ -6,15 +6,18 @@
     <title>Dr. Herbert He | Academic Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* CSS Variables */
         :root {
-            --primary-color: #0a66c2;
-            --secondary-color: #f3f6f9;
+            --primary-color: #1e3a8a;
+            --secondary-color: #f3f4f6;
             --text-color: #333;
             --light-text: #666;
-            --border-color: #ddd;
+            --border-color: #e5e7eb;
             --accent-color: #f0f7ff;
+            --link-color: #2563eb;
         }
         
+        /* Global Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,7 +25,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: #f9fafb;
@@ -32,38 +35,34 @@
         
         .container {
             width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px 20px;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0;
             background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border-radius: 8px;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            overflow: hidden;
         }
         
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-            margin: -30px -20px 30px -20px;
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s;
         }
         
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
+        a:hover {
+            text-decoration: underline;
         }
         
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        /* Layout Components */
+        .main-content {
+            padding: 40px;
         }
         
+        /* Profile Section */
         .profile {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 40px;
             flex-wrap: wrap;
         }
@@ -71,12 +70,11 @@
         .profile-image {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
+            border-radius: 4px;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-right: 40px;
             flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .profile-info {
@@ -84,112 +82,152 @@
             min-width: 300px;
         }
         
-        .profile-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 600;
             color: var(--primary-color);
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
         
-        .profile-subtitle {
+        .profile-title {
             font-size: 1.2rem;
             color: var(--light-text);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            font-weight: 500;
         }
         
+        .profile-institution {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        /* Contact Information */
         .contact-info {
-            display: flex;
-            flex-wrap: wrap;
             margin-top: 20px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            margin-right: 30px;
             margin-bottom: 10px;
         }
         
         .contact-item i {
             color: var(--primary-color);
             margin-right: 10px;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
         }
         
+        /* Section Styling */
         .section {
             margin-bottom: 40px;
         }
         
         .section-title {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--primary-color);
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* Bio Section */
+        .bio {
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        
+        /* Research Interests */
+        .research-interests {
+            margin-bottom: 30px;
+        }
+        
+        .research-list {
+            list-style-type: none;
+            margin-left: 5px;
+        }
+        
+        .research-list li {
             position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
         }
         
-        .section-title::after {
-            content: '';
+        .research-list li:before {
+            content: '•';
             position: absolute;
-            bottom: -2px;
             left: 0;
-            width: 60px;
-            height: 2px;
-            background-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: bold;
         }
         
-        .timeline {
+        /* Projects List */
+        .projects-list {
+            list-style-type: none;
+        }
+        
+        .projects-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .projects-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* Education Section */
+        .education-list {
             list-style: none;
         }
         
-        .timeline li {
-            position: relative;
-            padding-left: 30px;
+        .education-item {
             margin-bottom: 20px;
         }
         
-        .timeline li:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary-color);
+        .education-degree {
+            font-weight: 600;
         }
         
-        .timeline li:after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 24px;
-            width: 2px;
-            height: calc(100% - 12px);
-            background: var(--border-color);
-        }
-        
-        .timeline li:last-child:after {
-            display: none;
-        }
-        
-        .timeline-date {
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-        
-        .timeline-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-subtitle {
-            color: var(--light-text);
+        .education-institution {
             font-style: italic;
         }
         
-        .publication-list {
+        .education-year {
+            color: var(--light-text);
+        }
+        
+        /* Experience Section */
+        .experience-list {
+            list-style: none;
+        }
+        
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        
+        .experience-role {
+            font-weight: 600;
+        }
+        
+        .experience-company {
+            font-style: italic;
+        }
+        
+        .experience-year {
+            color: var(--light-text);
+        }
+        
+        /* Publications Section */
+        .publications-list {
             list-style: none;
         }
         
@@ -204,49 +242,41 @@
         }
         
         .publication-year {
-            font-weight: bold;
+            font-weight: 600;
             color: var(--primary-color);
             margin-right: 10px;
         }
         
         .publication-title {
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 5px;
         }
         
         .publication-venue {
             font-style: italic;
             color: var(--light-text);
+            margin-top: 5px;
         }
         
-        .research-list, .patent-list, .awards-list {
+        /* Awards and Patents */
+        .awards-list, .patent-list {
             list-style: none;
         }
         
-        .research-list li, .patent-list li, .awards-list li {
-            position: relative;
-            padding-left: 25px;
+        .award-item, .patent-item {
             margin-bottom: 15px;
         }
         
-        .research-list li:before, .patent-list li:before, .awards-list li:before {
-            content: '\f0eb';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 2px;
+        .award-title, .patent-title {
+            font-weight: 600;
+        }
+        
+        .award-year, .patent-year {
             color: var(--primary-color);
+            font-weight: 600;
         }
         
-        .patent-list li:before {
-            content: '\f0eb';
-        }
-        
-        .awards-list li:before {
-            content: '\f091';
-        }
-        
+        /* Footer */
         .footer {
             text-align: center;
             padding: 15px 0;
@@ -258,278 +288,254 @@
             font-size: 0.9rem;
         }
         
+        /* Publication Groups */
+        .publication-group {
+            margin-bottom: 30px;
+        }
+        
+        .publication-year-header {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .profile {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
             }
             
             .profile-image {
                 margin-right: 0;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
+                width: 150px;
+                height: 150px;
             }
             
-            .contact-info {
-                justify-content: center;
+            .main-content {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Dr. Herbert He</h1>
-            <p>Associate Researcher | Chinese Academy of Sciences</p>
-        </header>
-        
-        <div class="profile">
-            <img src="profile.jpg" alt="Herbert He" class="profile-image">
-            <div class="profile-info">
-                <h2 class="profile-title">Herbert He (He Dongbiao)</h2>
-                <p class="profile-subtitle">Computer Network Information Center, Chinese Academy of Sciences</p>
-                <p>Associate Researcher and Master's Supervisor specializing in distributed computing, cloud networks, and next-generation Internet protocols.</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>herbertt12@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>(+86) 15010337486</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Beijing, China (Origin: Linhai, Zhejiang)</span>
+        <div class="main-content">
+            <!-- Profile Section -->
+            <div class="profile">
+                <img src="pic/herb.png" alt="Herbert He" class="profile-image">
+                <div class="profile-info">
+                    <h1 class="profile-name">Dongbiao He</h1>
+                    <p class="profile-title">Associate Professor</p>
+                    <p class="profile-institution">Computer Network Information Center, Chinese Academy of Sciences</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>dbhe@cnic.cn</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Beijing, China</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Education</h2>
-            <ul class="timeline">
-                <li>
-                    <div class="timeline-date">2020 - 2022</div>
-                    <div class="timeline-title">Postdoctoral Researcher</div>
-                    <div class="timeline-subtitle">Tsinghua University, Shenzhen</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2013 - 2019</div>
-                    <div class="timeline-title">Ph.D. in Computer Science and Technology</div>
-                    <div class="timeline-subtitle">Tsinghua University, Beijing</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2017 - 2018</div>
-                    <div class="timeline-title">Visiting Scholar</div>
-                    <div class="timeline-subtitle">University of California, Santa Cruz (UCSC), California</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2009 - 2013</div>
-                    <div class="timeline-title">Bachelor's Degree in Software Engineering</div>
-                    <div class="timeline-subtitle">Jilin University, Changchun</div>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Work Experience</h2>
-            <ul class="timeline">
-                <li>
-                    <div class="timeline-date">2024 - Present</div>
-                    <div class="timeline-title">Associate Researcher, Master's Supervisor</div>
-                    <div class="timeline-subtitle">Computer Network Information Center, Chinese Academy of Sciences, Beijing</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2019 - 2024</div>
-                    <div class="timeline-title">R&D Technical Expert</div>
-                    <div class="timeline-subtitle">Sangfor Technologies Inc., Shenzhen</div>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Research Interests</h2>
-            <ul class="research-list">
-                <li>Distributed computing and cloud networks</li>
-                <li>Next-generation Internet Protocol</li>
-                <li>Application-aware Networking</li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Selected Publications</h2>
-            <ul class="publication-list">
+            
+            <!-- Bio Section -->
+            <div class="section bio">
+                <p>I am an Associate Professor at the Computer Network Information Center, Chinese Academy of Sciences. My research focuses on distributed computing, cloud networks, and next-generation Internet protocols. I received my Ph.D. from Tsinghua University and previously worked as an R&D Technical Expert at Sangfor Technologies.</p>
+            </div>
+            
+            <!-- Research Interests Section -->
+            <div class="section">
+                <h2 class="section-title">Research Interests</h2>
+                <ul class="research-list">
+                    <li>Integrated Space-Ground Network</li>
+                    <li>Next-generation Internet Protocol</li>
+                    <li>Application-aware Networking</li>
+                </ul>
+            </div>
+            
+            <!-- Current Projects Section -->
+            <div class="section">
+                <h2 class="section-title">Previous Projects</h2>
+                <ul class="projects-list">
+                    <li>Integrated Space-Ground Network Architecture</li>
+                    <li>The Design of Integrated Space-Ground Network Transport Layer Protocol</li>
+                </ul>
+            </div>
+            
+            
+            <!-- Professional Experience Section -->
+            <div class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                <ul class="experience-list">
+                    <li class="experience-item">
+                        <div class="experience-role">Associate Professor</div>
+                        <div class="experience-company">Computer Network Information Center, Chinese Academy of Sciences</div>
+                        <div class="experience-year">2024 - Present</div>
+                    </li>
+                    <li class="experience-item">
+                        <div class="experience-role">R&D Technical Expert</div>
+                        <div class="experience-company">Sangfor Technologies Inc., Shenzhen</div>
+                        <div class="experience-year">2019 - 2024</div>
+                    </li>
+                    <li class="experience-item">
+                        <div class="education-degree">Postdoctoral Researcher</div>
+                        <div class="education-institution">Tsinghua University, Shenzhen</div>
+                        <div class="education-year">2020 - 2022</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Publications Section -->
+            <div class="section">
+                <h2 class="section-title">Publications</h2>
+
+                <!-- 2025 Publications -->
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2025</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">Enhancing Video Conference Applications with VCApather:
+                                A Network as a Service Perspective</div>
+                            <div class="publication-venue">ACM Transactions on Multimedia Computing, Communications, and Applications</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">DATTA: Domain Diversity Aware Test-Time Adaptation for Dynamic Domain Shift Data Streams</div>
+                            <div class="publication-venue">IEEE International Conference on Multimedia&Expo (ICME)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Utilizing Contrastive Learning for Locating Network Anomalies in Real-time Conferencing Applications</div>
+                            <div class="publication-venue">IEEE International Conference on Multimedia&Expo (ICME) </div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">LLM4Band: Enhancing Reinforcement Learning with Large Language Models for Accurate Bandwidth Estimation</div>
+                            <div class="publication-venue">ACM Network and Operating System Support for Digital Audio and Video (NOSSDAV)</div>
+                        </li>
+                    </ul>
+                </div>
+                
                 <!-- 2024 Publications -->
-                <li class="publication-item">
-                    <span class="publication-year">2024</span>
-                    <div class="publication-title">LogGenius: An Unsupervised Log Parsing Framework with Zero-shot Prompt Engineering</div>
-                    <div class="publication-venue">IEEE ICWS</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2024</span>
-                    <div class="publication-title">MLPing: Real-time Proactive Fault Detection and Alarm for Large-scale Distributed IDC Network</div>
-                    <div class="publication-venue">IEEE ICDCS</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2024</span>
-                    <div class="publication-title">VCApather: A Network as a Service Solution for Video Conference Applications</div>
-                    <div class="publication-venue">ACM NOSSDAV</div>
-                </li>
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2024</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">LogGenius: An Unsupervised Log Parsing Framework with Zero-shot Prompt Engineering</div>
+                            <div class="publication-venue">IEEE International Conference on Web Services (ICWS)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">MLPing: Real-time Proactive Fault Detection and Alarm for Large-scale Distributed IDC Network</div>
+                            <div class="publication-venue">IEEE International Conference on Distributed Computing Systems (ICDCS)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">VCApather: A Network as a Service Solution for Video Conference Applications</div>
+                            <div class="publication-venue">ACM Network and Operating System Support for Digital Audio and Video (NOSSDAV)</div>
+                        </li>
+                    </ul>
+                </div>
                 
                 <!-- 2023 Publications -->
-                <li class="publication-item">
-                    <span class="publication-year">2023</span>
-                    <div class="publication-title">WAN-INT: Cost-Effective InBand Network Telemetry in WAN With A Performance-aware Path Planner</div>
-                    <div class="publication-venue">IEEE ICPADS</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2023</span>
-                    <div class="publication-title">FogEye: Towards Performance Efficient Fog Networking Telemetry</div>
-                    <div class="publication-venue">IEEE Globecom Workshop</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2023</span>
-                    <div class="publication-title">Felinet: Accelerating Federated Learning Convergence in Heterogeneous Edge Networks</div>
-                    <div class="publication-venue">The 2nd ACM Mobicom Workshop on Fededge</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2023</span>
-                    <div class="publication-title">Delay Based Congestion Control for Cross-Datacenter Networks</div>
-                    <div class="publication-venue">IEEE IWQoS</div>
-                </li>
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2023</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">WAN-INT: Cost-Effective InBand Network Telemetry in WAN With A Performance-aware Path Planner</div>
+                            <div class="publication-venue">IEEE International Conference on Parallel and Distributed Systems (ICPADS)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">FogEye: Towards Performance Efficient Fog Networking Telemetry</div>
+                            <div class="publication-venue">IEEE Globecom Workshop</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Felinet: Accelerating Federated Learning Convergence in Heterogeneous Edge Networks</div>
+                            <div class="publication-venue">The 2nd ACM Mobicom Workshop on Fededge</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Delay Based Congestion Control for Cross-Datacenter Networks</div>
+                            <div class="publication-venue">IEEE International Workshop on Quality of Service (IWQoS)</div>
+                        </li>
+                    </ul>
+                </div>
                 
                 <!-- 2021 Publications -->
-                <li class="publication-item">
-                    <span class="publication-year">2021</span>
-                    <div class="publication-title">HybridSkipList: A Case Study of Designing Distributed Data Structure with Hybrid RDMA</div>
-                    <div class="publication-venue">IEEE COMPSAC</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2021</span>
-                    <div class="publication-title">CUBIST: High-Quality 360-Degree Video Streaming via Edge Caching and User Adaptation</div>
-                    <div class="publication-venue">IEEE ICWS</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2021</span>
-                    <div class="publication-title">Qualitative Communications for Augmented Reality and Virtual Reality</div>
-                    <div class="publication-venue">IEEE HPSR</div>
-                </li>
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2021</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">HybridSkipList: A Case Study of Designing Distributed Data Structure with Hybrid RDMA</div>
+                            <div class="publication-venue">IEEE Computer Software and Applications Conference (COMPSAC)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">CUBIST: High-Quality 360-Degree Video Streaming via Edge Caching and User Adaptation</div>
+                            <div class="publication-venue">IEEE International Conference on Web Services (ICWS)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Qualitative Communications for Augmented Reality and Virtual Reality</div>
+                            <div class="publication-venue">IEEE High Performance Switching and Routing (HPSR)</div>
+                        </li>
+                    </ul>
+                </div>
                 
                 <!-- 2020 Publications -->
-                <li class="publication-item">
-                    <span class="publication-year">2020</span>
-                    <div class="publication-title">Efficient Edge Caching for High-Quality 360-Degree Video Delivery</div>
-                    <div class="publication-venue">Springer MMM</div>
-                </li>
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2020</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">Efficient Edge Caching for High-Quality 360-Degree Video Delivery</div>
+                            <div class="publication-venue">Springer MultiMedia Modeling (MMM)</div>
+                        </li>
+                    </ul>
+                </div>
                 
                 <!-- 2019 Publications -->
-                <li class="publication-item">
-                    <span class="publication-year">2019</span>
-                    <div class="publication-title">Pushing Smart Caching to the Edge with Baycache</div>
-                    <div class="publication-venue">Proceedings of the 16th EAI International Conference on Mobile and Ubiquitous Systems</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2019</span>
-                    <div class="publication-title">RankRoute: Efficient Interests Forwarding by Nodes Ranking</div>
-                    <div class="publication-venue">IEEE ICNC</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2019</span>
-                    <div class="publication-title">Towards Tile Based Distribution Simulation in Immersive Video Streaming</div>
-                    <div class="publication-venue">IFIP NETWORKING</div>
-                </li>
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2019</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">Pushing Smart Caching to the Edge with Baycache</div>
+                            <div class="publication-venue">16th EAI International Conference on Mobile and Ubiquitous Systems</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">RankRoute: Efficient Interests Forwarding by Nodes Ranking</div>
+                            <div class="publication-venue">IEEE International Conference on Computing, Networking and Communications (ICNC)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Towards Tile Based Distribution Simulation in Immersive Video Streaming</div>
+                            <div class="publication-venue">IFIP Networking Conference (NETWORKING)</div>
+                        </li>
+                    </ul>
+                </div>
                 
                 <!-- 2018 Publications -->
-                <li class="publication-item">
-                    <span class="publication-year">2018</span>
-                    <div class="publication-title">Fast VM Migration in Edge Cloud: A VM Slicing and Caching Approach</div>
-                    <div class="publication-venue">USENIX OSDI Poster</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2018</span>
-                    <div class="publication-title">Coda: Achieving Multipath Data Transmission in NDN</div>
-                    <div class="publication-venue">IEEE IPCCC</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2018</span>
-                    <div class="publication-title">MCPC: Achieving In-network Caching by Network Partition</div>
-                    <div class="publication-venue">IEEE ICPADS</div>
-                </li>
-                <li class="publication-item">
-                    <span class="publication-year">2018</span>
-                    <div class="publication-title">Joint Rate and FoV adaptation in immersive video streaming</div>
-                    <div class="publication-venue">ACM SIGCOMM Workshop on AR/VR Network</div>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Patents</h2>
-            <ul class="patent-list">
-                <li>
-                    <strong>2022:</strong> Alarm analysis method, apparatus, electronic device and storage medium
-                </li>
-                <li>
-                    <strong>2022:</strong> Network bandwidth detection method, apparatus, system, device and storage medium
-                </li>
-                <li>
-                    <strong>2020:</strong> A method, apparatus, device and computer-readable storage medium for network routing <em>(Awarded 2023 Company Annual Patent Award)</em>
-                </li>
-                <li>
-                    <strong>2020:</strong> Application classification method, apparatus, device and storage medium
-                </li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Project Experience</h2>
-            <ul class="timeline">
-                <li>
-                    <div class="timeline-date">2022 - 2023</div>
-                    <div class="timeline-title">High-performance software and hardware encoding optimization technology for desktop cloud (Application Layer)</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2021 - 2023</div>
-                    <div class="timeline-title">Application-aware network technology for SASE (Transport Layer)</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2021 - 2022</div>
-                    <div class="timeline-title">Cloud-network integration intelligent routing technology (Network Layer)</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2019 - 2020</div>
-                    <div class="timeline-title">Software-defined WAN intelligent routing and protocol adaptive technology (Transport Layer)</div>
-                </li>
-                <li>
-                    <div class="timeline-date">2013 - 2018</div>
-                    <div class="timeline-title">Implementation of cloud service integration system for supercomputing scenarios</div>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">Awards & Honors</h2>
-            <ul class="awards-list">
-                <li>
-                    <strong>2021:</strong> Sangfor Annual Outstanding Employee <em>(Highest honor in R&D system)</em>
-                </li>
-                <li>
-                    <strong>2020:</strong> Sangfor Annual Excellence Employee <em>(Sangfor's highest individual honor)</em>
-                </li>
-                <li>
-                    <strong>2019:</strong> Annual "People's Network Scholarship" First Prize
-                </li>
-                <li>
-                    <strong>2018:</strong> Annual "People's Network Scholarship" First Prize
-                </li>
-            </ul>
+                <div class="publication-group">
+                    <h3 class="publication-year-header">2018</h3>
+                    <ul class="publications-list">
+                        <li class="publication-item">
+                            <div class="publication-title">Fast VM Migration in Edge Cloud: A VM Slicing and Caching Approach</div>
+                            <div class="publication-venue">USENIX Symposium on Operating Systems Design and Implementation (OSDI) Poster</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Coda: Achieving Multipath Data Transmission in NDN</div>
+                            <div class="publication-venue">IEEE International Performance Computing and Communications Conference (IPCCC)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">MCPC: Achieving In-network Caching by Network Partition</div>
+                            <div class="publication-venue">IEEE International Conference on Parallel and Distributed Systems (ICPADS)</div>
+                        </li>
+                        <li class="publication-item">
+                            <div class="publication-title">Joint Rate and FoV adaptation in immersive video streaming</div>
+                            <div class="publication-venue">ACM SIGCOMM Workshop on AR/VR Network</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+           
         </div>
     </div>
-    
-    <div class="footer">
-        <p>Copyright © 2024 Dr. Herbert He | Last Updated: May 2024</p>
-    </div>
+    <!-- Footer would normally go here but appears to be cut off in the original code -->
 </body>
 </html>
