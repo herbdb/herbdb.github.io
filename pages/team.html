@@ -5,11 +5,355 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Our Research Team at Fanlab">
     <title>Team - Fanlab</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified.css">
+
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:        #1a1a2e;
+            --accent:     #c0392b;
+            --gold:       #d4a843;
+            --sand:       #f7f3ee;
+            --white:      #ffffff;
+            --muted:      #6b6b7a;
+            --border:     #e2ddd8;
+            --shadow-sm:  0 2px 8px rgba(26,26,46,.07);
+            --shadow-md:  0 8px 30px rgba(26,26,46,.12);
+            --shadow-lg:  0 20px 60px rgba(26,26,46,.18);
+            --font-serif: 'Libre Baskerville', Georgia, serif;
+            --font-sans:  'DM Sans', system-ui, sans-serif;
+            --radius:     12px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--sand);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(26,26,46,.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 68px;
+        }
+        .logo h1 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem; color: var(--white);
+            letter-spacing: .04em;
+        }
+        .logo .tagline {
+            font-size: .68rem; color: var(--gold);
+            letter-spacing: .15em; text-transform: uppercase;
+            margin-top: -2px;
+        }
+        .nav-menu {
+            display: flex; gap: 2rem; list-style: none;
+        }
+        .nav-menu a {
+            font-size: .88rem; color: rgba(255,255,255,.7);
+            text-decoration: none; letter-spacing: .05em;
+            text-transform: uppercase; font-weight: 500;
+            transition: color .2s;
+        }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--white); }
+        .nav-menu a.active { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+        .menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--ink);
+            padding: 110px 2rem 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: 
+                radial-gradient(ellipse 60% 60% at 20% 50%, rgba(192,57,43,.18) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 50% at 80% 30%, rgba(212,168,67,.12) 0%, transparent 70%);
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            color: var(--white);
+            letter-spacing: -.01em;
+            margin-bottom: .6rem;
+        }
+        .hero-content p {
+            font-size: 1.1rem; color: rgba(255,255,255,.55);
+            letter-spacing: .1em; text-transform: uppercase;
+            font-weight: 300;
+        }
+        .hero-rule {
+            width: 50px; height: 3px;
+            background: var(--gold);
+            margin: 1.2rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ── Section wrapper ── */
+        .team-section { padding: 80px 2rem; }
+        .team-section.alt { background: var(--white); }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .section-header {
+            display: flex; align-items: center; gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem; color: var(--ink);
+            letter-spacing: -.01em;
+        }
+        .section-header::after {
+            content: '';
+            flex: 1; height: 1px;
+            background: var(--border);
+        }
+        .section-header .label {
+            font-size: .7rem; letter-spacing: .2em;
+            text-transform: uppercase; color: var(--accent);
+            font-weight: 600;
+            background: rgba(192,57,43,.08);
+            padding: .3rem .8rem; border-radius: 20px;
+        }
+
+        /* ── Director Card ── */
+        .director-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem 3.5rem;
+            box-shadow: var(--shadow-md);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0 3rem;
+            align-items: start;
+            position: relative;
+            overflow: hidden;
+        }
+        .director-card::before {
+            content: '';
+            position: absolute; left: 0; top: 0; bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--accent), var(--gold));
+        }
+        .director-avatar-wrap {
+            width: 90px; height: 90px;
+            background: linear-gradient(135deg, var(--ink), #2c3e6d);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+        }
+        .director-info {}
+        .director-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.55rem; margin-bottom: .2rem;
+        }
+        .director-info .position {
+            color: var(--accent); font-weight: 600;
+            font-size: .85rem; letter-spacing: .06em;
+            text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .director-info p { color: #444; font-size: .95rem; margin-bottom: .6rem; }
+        .director-email {
+            display: inline-flex; align-items: center; gap: .5rem;
+            margin-top: .6rem;
+            font-size: .85rem; color: var(--muted);
+        }
+        .director-email::before { content: '✉'; }
+
+        /* ── Team Grid ── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .member-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.8rem 1.6rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform .28s ease, box-shadow .28s ease;
+            display: flex; flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        .member-card::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s ease;
+        }
+        .member-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .member-card:hover::after { transform: scaleX(1); }
+
+        .member-avatar {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, #e8e4de, #d4cfc8);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.1rem;
+        }
+        .member-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem; margin-bottom: .2rem;
+        }
+        .member-card .position {
+            color: var(--accent); font-weight: 600;
+            font-size: .72rem; letter-spacing: .1em;
+            text-transform: uppercase; margin-bottom: .8rem;
+        }
+        .member-card .description {
+            font-size: .88rem; color: var(--muted);
+            flex: 1; margin-bottom: 1.4rem;
+            line-height: 1.55;
+        }
+
+        /* Card actions */
+        .card-actions {
+            display: flex; gap: .7rem; justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex; align-items: center; gap: .4rem;
+            padding: .45rem 1.1rem;
+            border-radius: 6px;
+            font-size: .78rem; font-weight: 600;
+            letter-spacing: .04em;
+            text-decoration: none;
+            transition: all .2s ease;
+            font-family: var(--font-sans);
+        }
+        .btn-primary {
+            background: var(--ink);
+            color: var(--white);
+            border: 1.5px solid var(--ink);
+        }
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--ink);
+            background: var(--sand);
+        }
+
+        /* ── PhD Section ── */
+        .phd-intro { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; }
+        .research-tags {
+            display: flex; flex-wrap: wrap; gap: .8rem;
+        }
+        .tag {
+            display: inline-flex; align-items: center; gap: .5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: .55rem 1.2rem;
+            font-size: .83rem;
+            color: var(--ink);
+            font-weight: 500;
+            transition: all .2s;
+        }
+        .tag:hover {
+            background: var(--ink);
+            color: var(--white);
+            border-color: var(--ink);
+        }
+
+        /* ── Visiting ── */
+        .visiting-box {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            border: 1px dashed var(--border);
+        }
+        .visiting-box p { color: var(--muted); font-size: .95rem; max-width: 560px; margin: 0 auto; }
+        .visiting-box a { color: var(--accent); font-weight: 600; text-decoration: none; }
+        .visiting-box a:hover { text-decoration: underline; }
+        .visiting-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--ink);
+            color: rgba(255,255,255,.65);
+            padding: 60px 2rem 30px;
+        }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+        .footer-section h4 {
+            font-family: var(--font-serif);
+            color: var(--white); margin-bottom: 1rem; font-size: 1rem;
+        }
+        .footer-section p, .footer-section li { font-size: .88rem; line-height: 1.8; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+        .footer-section a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1200px; margin: 2rem auto 0;
+            text-align: center; font-size: .8rem; color: rgba(255,255,255,.3);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--ink); padding: 1rem 2rem; }
+            .nav-menu.open { display: flex; }
+            .director-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; }
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-content { animation: fadeUp .7s ease both; }
+        .director-card { animation: fadeUp .6s .1s ease both; }
+        .member-card:nth-child(1) { animation: fadeUp .5s .05s ease both; }
+        .member-card:nth-child(2) { animation: fadeUp .5s .12s ease both; }
+        .member-card:nth-child(3) { animation: fadeUp .5s .19s ease both; }
+        .member-card:nth-child(4) { animation: fadeUp .5s .26s ease both; }
+    </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -33,226 +377,201 @@
         <div class="hero-content">
             <h1>Our Team</h1>
             <p>Distinguished researchers and scholars</p>
+            <div class="hero-rule"></div>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main>
+        <!-- Director -->
         <section class="team-section">
             <div class="container">
-                <h2>Laboratory Director</h2>
+                <div class="section-header">
+                    <span class="label">Leadership</span>
+                    <h2>Laboratory Director</h2>
+                </div>
                 <div class="director-card">
-                    <h3>Prof. Zhang Chengwen</h3>
-                    <p class="position">Director | Chief Researcher</p>
-                    <p>Ph.D. in Computer Science and Technology with extensive research in artificial intelligence and machine learning. Published 100+ SCI papers and received multiple national research grants.</p>
-                    <p><strong>Email:</strong> zhangcw@fanlab.edu</p>
+                    <div class="director-avatar-wrap">👨‍💼</div>
+                    <div class="director-info">
+                        <h3>Prof. Richard Li</h3>
+                        <p class="position">Director · Chief Professor</p>
+                        <p>Dr. Renwei (Richard) Li is a Chair Professor at Southeast University, China. From 2007 to 2024, he was Chief Scientist and SVP at Futurewei Technologies, following roles at Cisco and Ericsson. A prominent leader in the field, he chaired ITU-T FG Network 2030 and ETSI ISG NGP, and has led 30+ international conferences. He received the 2023 IEEE MMTC Outstanding Researcher Award, holds 65 US patents, and has published over 120 papers. His research currently focuses on 5G/6G, Industrial Networks, AI, and future network architectures.</p>
+                        <span class="director-email">zhangcw@fanlab.edu</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="team-section">
+        <!-- Senior Researchers -->
+        <section class="team-section alt">
             <div class="container">
-                <h2>Senior Researchers</h2>
+                <div class="section-header">
+                    <span class="label">Faculty</span>
+                    <h2>Senior Researchers</h2>
+                </div>
                 <div class="team-grid">
                     <div class="member-card">
                         <div class="member-avatar">👨‍🔬</div>
-                        <h3>Dr. Zhang Li</h3>
-                        <p class="position">Associate Director | Researcher</p>
-                        <p>Expert in deep learning and computer vision</p>
-                        <a href="mailto:zhangli@fanlab.edu">Contact</a>
+                        <h3>Prof. Han Lin</h3>
+                        <p class="position">Associate Director · Researcher</p>
+                        <p class="description">Expert in deep learning and computer vision</p>
+                        <div class="card-actions">
+                            <a href="https://cs.seu.edu.cn/main.htm" class="btn btn-primary">Profile</a>
+                            <a href="mailto:zhangli@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
+
                     <div class="member-card">
                         <div class="member-avatar">👩‍🔬</div>
-                        <h3>Dr. Wang Ming</h3>
-                        <p class="position">Researcher</p>
-                        <p>Quantum computing and fundamental physics research</p>
-                        <a href="mailto:wangming@fanlab.edu">Contact</a>
+                        <h3>Prof. Dongbiao He</h3>
+                        <p class="position">Associate Professor </p>
+                        <p class="description">Quantum computing and fundamental physics research</p>
+                        <div class="card-actions">
+                            <a href="people/herb.html" class="btn btn-primary">Profile</a>
+                            <a href="mailto:hdb@seu.edu.cn" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
+
                     <div class="member-card">
                         <div class="member-avatar">👨‍🔬</div>
-                        <h3>Dr. Li Hua</h3>
-                        <p class="position">Researcher</p>
-                        <p>Bioinformatics and genomic analysis</p>
-                        <a href="mailto:lihua@fanlab.edu">Contact</a>
+                        <h3>Prof. Biwei Li</h3>
+                        <p class="position">Associate Professor </p>
+                        <p class="description">Bioinformatics and genomic analysis</p>
+                        <div class="card-actions">
+                            <a href="https://cs.seu.edu.cn/libiwei/main.htm" class="btn btn-primary">Profile</a>
+                            <a href="mailto:lihua@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
+
                     <div class="member-card">
                         <div class="member-avatar">👩‍🔬</div>
                         <h3>Dr. Liu Lei</h3>
                         <p class="position">Researcher</p>
-                        <p>Cloud computing and distributed systems</p>
-                        <a href="mailto:liulei@fanlab.edu">Contact</a>
+                        <p class="description">Cloud computing and distributed systems</p>
+                        <div class="card-actions">
+                            <a href="people/liulei.html" class="btn btn-primary">Profile</a>
+                            <a href="mailto:liulei@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="team-section" style="background-color: #f5f5f5;">
+        <!-- Postdocs -->
+        <section class="team-section">
             <div class="container">
-                <h2>Postdoctoral Researchers</h2>
+                <div class="section-header">
+                    <span class="label">Postdoctoral</span>
+                    <h2>Postdoctoral Researchers</h2>
+                </div>
                 <div class="team-grid">
                     <div class="member-card">
                         <div class="member-avatar">👨‍🎓</div>
                         <h3>Chen Xiao</h3>
                         <p class="position">Postdoctoral Researcher</p>
-                        <p>Blockchain technology research</p>
+                        <p class="description">Blockchain technology research</p>
+                        <div class="card-actions">
+                            <a href="mailto:chenxiao@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">👨‍🎓</div>
                         <h3>Yang Jun</h3>
                         <p class="position">Postdoctoral Researcher</p>
-                        <p>Internet of Things and edge computing</p>
+                        <p class="description">Internet of Things and edge computing</p>
+                        <div class="card-actions">
+                            <a href="mailto:yangjun@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">👩‍🎓</div>
                         <h3>Zhou Juan</h3>
                         <p class="position">Postdoctoral Researcher</p>
-                        <p>Natural language processing</p>
+                        <p class="description">Natural language processing</p>
+                        <div class="card-actions">
+                            <a href="mailto:zhoujuan@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">👨‍🎓</div>
                         <h3>Wu Jie</h3>
                         <p class="position">Postdoctoral Researcher</p>
-                        <p>Data mining and visualization</p>
+                        <p class="description">Data mining and visualization</p>
+                        <div class="card-actions">
+                            <a href="mailto:wujie@fanlab.edu" class="btn btn-outline">Contact</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="team-section">
+        <!-- PhD -->
+        <section class="team-section alt">
             <div class="container">
-                <h2>PhD Students</h2>
-                <p>Our laboratory has over 20 PhD candidates pursuing cutting-edge research across various domains.</p>
-                <div class="research-areas">
-                    <ul style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
-                        <li>🔬 Computer Vision</li>
-                        <li>🧠 Neural Network Design</li>
-                        <li>💾 Big Data Processing</li>
-                        <li>🔐 Cybersecurity</li>
-                        <li>⚡ High-Performance Computing</li>
-                        <li>📱 Mobile Computing</li>
-                    </ul>
+                <div class="section-header">
+                    <span class="label">Graduate</span>
+                    <h2>PhD Students</h2>
+                </div>
+                <p class="phd-intro">Our laboratory has over 20 PhD candidates pursuing cutting-edge research across various domains.</p>
+                <div class="research-tags">
+                    <span class="tag">🔬 Computer Vision</span>
+                    <span class="tag">🧠 Neural Network Design</span>
+                    <span class="tag">💾 Big Data Processing</span>
+                    <span class="tag">🔐 Cybersecurity</span>
+                    <span class="tag">⚡ High-Performance Computing</span>
+                    <span class="tag">📱 Mobile Computing</span>
                 </div>
             </div>
         </section>
 
-        <section class="team-section" style="background-color: #f5f5f5;">
+        <!-- Visiting -->
+        <section class="team-section">
             <div class="container">
-                <h2>Visiting Scholars</h2>
-                <p>We regularly invite renowned experts and scholars from domestic and international institutions for academic exchange and collaborative research.</p>
-                <p style="margin-top: 2rem; font-style: italic;">If you are interested in visiting our laboratory, please <a href="contact.html">contact us</a>.</p>
+                <div class="section-header">
+                    <span class="label">Collaboration</span>
+                    <h2>Visiting Scholars</h2>
+                </div>
+                <div class="visiting-box">
+                    <div class="visiting-icon">🌍</div>
+                    <p>We regularly invite renowned experts and scholars from domestic and international institutions for academic exchange and collaborative research.</p>
+                    <p style="margin-top:1.2rem; font-style:italic; color:#999;">Interested in visiting our laboratory? <a href="contact.html">Get in touch →</a></p>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About Us</h4>
-                    <p>Fanlab (Future Advanced Network Lab) is a leading research laboratory at Southeast University dedicated to advancing technology and innovation.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Lab</a></li>
-                        <li><a href="research.html">Research</a></li>
-                        <li><a href="team.html">Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: contact@fanlab.edu</p>
-                    <p>Location: Southeast University</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>Fanlab (Future Advanced Network Lab) is a leading research laboratory at Southeast University dedicated to advancing technology and innovation.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Fanlab, Southeast University. All rights reserved.</p>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Lab</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="team.html">Team</a></li>
+                </ul>
             </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: contact@fanlab.edu</p>
+                <p>Location: Southeast University</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Fanlab, Southeast University. All rights reserved.</p>
         </div>
     </footer>
 
-    <style>
-        .director-card {
-            background-color: var(--light-bg);
-            padding: 2.5rem;
-            border-radius: 10px;
-            border-left: 5px solid var(--secondary-color);
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-        }
-
-        .director-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .position {
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .member-card {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border-top: 3px solid var(--secondary-color);
-        }
-
-        .member-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-large);
-        }
-
-        .member-avatar {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .member-card h3 {
-            margin-bottom: 0.3rem;
-        }
-
-        .member-card .position {
-            margin-bottom: 0.5rem;
-        }
-
-        .member-card p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .member-card a {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .member-card a:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
-        }
-
-        .team-section {
-            padding: 60px 20px;
-        }
-    </style>
-
     <script src="../js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
+

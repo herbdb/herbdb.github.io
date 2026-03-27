@@ -4,15 +4,15 @@
 
 @media (max-width: 1024px) {
     h1 {
-        font-size: 2rem;
+        font-size: 2.4rem;
     }
 
     h2 {
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: 3rem;
     }
 
     .nav-menu {
@@ -25,16 +25,20 @@
    ============================================ */
 
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
     h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
 
     h3 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     /* Navigation */
@@ -94,11 +98,11 @@
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .hero-buttons {
@@ -113,7 +117,7 @@
 
     /* Sections */
     section {
-        padding: 40px 20px;
+        padding: 50px 20px;
     }
 
     /* Grid */
@@ -138,7 +142,11 @@
     }
 
     .stat-item h3 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
+    }
+
+    .stat-item p {
+        font-size: 1.1rem;
     }
 
     /* Footer */

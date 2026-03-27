@@ -4,17 +4,376 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fanlab - Future Advanced Network Lab at Southeast University">
-    <title>Fanlab - Home</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>Fanlab - Future Advanced Network Lab</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ── Reset & Variables (From team.html) ── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --ink: #1a1a2e;
+            --accent: #c0392b; /* Red */
+            --gold: #d4a843;   /* Gold */
+            --sand: #f7f3ee;  /* Beige Background */
+            --white: #ffffff;
+            --muted: #6b6b7a;
+            --border: #e2ddd8;
+            --shadow-sm: 0 2px 8px rgba(26,26,46,.07);
+            --shadow-md: 0 8px 30px rgba(26,26,46,.12);
+            --shadow-lg: 0 20px 60px rgba(26,26,46,.18);
+            --font-serif: 'Libre Baskerville', Georgia, serif;
+            --font-sans: 'DM Sans', system-ui, sans-serif;
+            --radius: 12px;
+        }
+        body {
+            font-family: var(--font-sans);
+            background: var(--sand);
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        /* ── Navbar (Modified to match team style but keep index content) ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(26,26,46,.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .logo h1 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: .04em;
+        }
+        .logo .tagline {
+            font-size: .68rem;
+            color: var(--gold);
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-top: -2px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            font-size: .88rem;
+            color: rgba(255,255,255,.7);
+            text-decoration: none;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color .2s;
+        }
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: var(--white);
+        }
+        .nav-menu a.active {
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 2px;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            background: var(--ink);
+            padding: 110px 2rem 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(192,57,43,.18) 0%, transparent 70%),
+                        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(212,168,67,.12) 0%, transparent 70%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            color: var(--white);
+            letter-spacing: -.01em;
+            margin-bottom: .6rem;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,.55);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        .hero-rule {
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            margin: 1.2rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* ── Section wrapper ── */
+        .section-wrap {
+            padding: 80px 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--ink);
+            letter-spacing: -.01em;
+        }
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .section-header .label {
+            font-size: .7rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            background: rgba(192,57,43,.08);
+            padding: .3rem .8rem;
+            border-radius: 20px;
+        }
+
+        /* ── Statistics (Grid) ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .stat-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .stat-item h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .stat-item p {
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ── Research Cards ── */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.8rem 1.6rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform .28s ease, box-shadow .28s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+        .card p {
+            color: var(--muted);
+            font-size: .95rem;
+            margin-bottom: 1.4rem;
+        }
+
+        /* ── News Section ── */
+        .news-item {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .news-date {
+            font-size: .75rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .news-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--ink);
+        }
+        .news-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .news-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Buttons (Global) ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .45rem 1.1rem;
+            border-radius: 6px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-decoration: none;
+            transition: all .2s ease;
+            font-family: var(--font-sans);
+        }
+        .btn-primary {
+            background: var(--ink);
+            color: var(--white);
+            border: 1.5px solid var(--ink);
+        }
+        .btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid var(--border);
+        }
+        .btn-outline:hover {
+            border-color: var(--ink);
+            background: var(--sand);
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: var(--ink);
+            color: rgba(255,255,255,.65);
+            padding: 60px 2rem 30px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+        .footer-section h4 {
+            font-family: var(--font-serif);
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .footer-section p, .footer-section li {
+            font-size: .88rem;
+            line-height: 1.8;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section a {
+            color: rgba(255,255,255,.55);
+            text-decoration: none;
+            transition: color .2s;
+        }
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            text-align: center;
+            font-size: .8rem;
+            color: rgba(255,255,255,.3);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                left: 0;
+                right: 0;
+                background: var(--ink);
+                padding: 1rem 2rem;
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <h1>Fanlab</h1>
-                <p class="tagline">Innovation · Research · Excellence</p>
+                <p class="tagline">Innovation · Research · Engineering</p>
             </div>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
@@ -28,82 +387,23 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to Fanlab</h1>
-            <p>Future Advanced Network Lab at Southeast University</p>
-            <div class="hero-buttons">
-                <a href="pages/about.html" class="btn btn-primary">Learn More</a>
-                <a href="pages/research.html" class="btn btn-secondary">View Research</a>
-            </div>
+            <h1>Future Advanced Network Lab</h1>
+            <p>Leading research in advanced network technologies at Southeast University</p>
+            <div class="hero-rule"></div>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main>
-        <!-- Research Areas -->
-        <section class="research-areas">
-            <div class="container">
-                <h2>Research Directions</h2>
-                <div class="grid">
-                    <div class="card">
-                        <div class="card-icon">🔬</div>
-                        <h3>Network Fundamentals</h3>
-                        <p>Exploring advanced network theory and fundamental technologies.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">💡</div>
-                        <h3>Technology Innovation</h3>
-                        <p>Developing cutting-edge network technologies and solutions.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🌐</div>
-                        <h3>International Collaboration</h3>
-                        <p>Establishing partnerships with leading research institutions worldwide.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">📚</div>
-                        <h3>Talent Cultivation</h3>
-                        <p>Training high-quality researchers and academic successors.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Latest News -->
-        <section class="news">
-            <div class="container">
-                <h2>Latest News</h2>
-                <div class="news-grid">
-                    <article class="news-item">
-                        <div class="news-date">2026-03-27</div>
-                        <h3>Major Research Breakthrough Announced</h3>
-                        <p>Our research team has achieved significant breakthroughs in advanced network research. Related papers have been published in top-tier international journals.</p>
-                        <a href="#">Read More</a>
-                    </article>
-                    <article class="news-item">
-                        <div class="news-date">2026-03-10</div>
-                        <h3>International Conference Participation</h3>
-                        <p>Our researchers participated in the 2026 International Computer Science Conference and delivered keynote presentations.</p>
-                        <a href="#">Read More</a>
-                    </article>
-                    <article class="news-item">
-                        <div class="news-date">2026-02-28</div>
-                        <h3>New Team Members Join Fanlab</h3>
-                        <p>Welcome to new researchers joining our team, bringing fresh energy and diverse expertise to the laboratory.</p>
-                        <a href="#">Read More</a>
-                    </article>
-                </div>
-                <div class="text-center">
-                    <a href="pages/news.html" class="btn btn-primary">View All News</a>
-                </div>
-            </div>
-        </section>
-
         <!-- Statistics -->
-        <section class="statistics">
+        <section class="section-wrap">
             <div class="container">
+                <div class="section-header">
+                    <span class="label">Impact</span>
+                    <h2>Our Key Metrics</h2>
+                </div>
                 <div class="stats-grid">
                     <div class="stat-item">
                         <h3>50+</h3>
@@ -124,36 +424,94 @@
                 </div>
             </div>
         </section>
+
+        <!-- Research Areas -->
+        <section class="section-wrap" style="background: var(--white);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="label">Explore</span>
+                    <h2>Research Directions</h2>
+                </div>
+                <div class="research-grid">
+                    <div class="card">
+                        <h3>Network Fundamentals</h3>
+                        <p>Exploring advanced network theory and fundamental technologies that shape the future of connectivity.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Technology Innovation</h3>
+                        <p>Developing cutting-edge network technologies and solutions at the frontier of what's possible.</p>
+                    </div>
+                    <div class="card">
+                        <h3>International Collaboration</h3>
+                        <p>Establishing partnerships with leading research institutions worldwide to advance shared goals.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Talent Cultivation</h3>
+                        <p>Training high-quality researchers and academic successors ready to lead the next generation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News -->
+        <section class="section-wrap">
+            <div class="container">
+                <div class="section-header">
+                    <span class="label">Updates</span>
+                    <h2>Latest News</h2>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2026 · 03 · 27</div>
+                    <h3>Major Research Breakthrough Announced</h3>
+                    <p>Our team achieved significant breakthroughs in advanced network research. Related papers have been published in top-tier international journals.</p>
+                    <a href="pages/news.html">Read More →</a>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2026 · 03 · 10</div>
+                    <h3>International Conference Participation</h3>
+                    <p>Our researchers participated in the 2026 International Computer Science Conference and delivered keynote presentations.</p>
+                    <a href="pages/news.html">Read More →</a>
+                </div>
+                <div class="text-center">
+                    <a href="pages/news.html" class="btn btn-secondary">View All News</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About Us</h4>
-                    <p>An academic research laboratory dedicated to advanced network research and technological innovation.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="pages/about.html">About Lab</a></li>
-                        <li><a href="pages/research.html">Research Projects</a></li>
-                        <li><a href="pages/team.html">Team Members</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Email: contact@fanlab.seu.edu.cn</p>
-                    <p>Southeast University, China</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <p>An academic research laboratory dedicated to advanced network research and technological innovation at Southeast University.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Fanlab, Southeast University. All rights reserved.</p>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="pages/about.html">About Lab</a></li>
+                    <li><a href="pages/research.html">Research Projects</a></li>
+                    <li><a href="pages/team.html">Team Members</a></li>
+                    <li><a href="pages/publications.html">Publications</a></li>
+                </ul>
             </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>contact@fanlab.seu.edu.cn</p>
+                <p style="margin-top: 0.5rem;">Southeast University<br>Nanjing, China</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <span style="color: var(--gold);">Fanlab</span>, Southeast University. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+    </script>
+
 </body>
 </html>

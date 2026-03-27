@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Fanlab - Future Advanced Network Lab">
-    <title>Contact Fanlab</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <meta name="description" content="Contact Information for Fanlab">
+    <title>Contact - Fanlab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified.css">
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <h1>Fanlab</h1>
-                <p class="tagline">Innovation · Research · Excellence</p>
+                <p class="tagline">Innovation · Research · Engineering</p>
             </div>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
@@ -33,6 +34,7 @@
         <div class="hero-content">
             <h1>Contact Us</h1>
             <p>We'd love to hear from you</p>
+            <div class="hero-rule"></div>
         </div>
     </section>
 
@@ -176,25 +178,26 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>关于我们</h4>
-                    <p>一个致力于科学研究和技术创新的学术实验室。</p>
+                    <h4>About Us</h4>
+                    <p>An academic research laboratory dedicated to advanced network research and technological innovation at Southeast University.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>快速链接</h4>
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="about.html">关于实验室</a></li>
-                        <li><a href="research.html">研究项目</a></li>
-                        <li><a href="team.html">团队成员</a></li>
+                        <li><a href="about.html">About Lab</a></li>
+                        <li><a href="research.html">Research Projects</a></li>
+                        <li><a href="team.html">Team Members</a></li>
+                        <li><a href="publications.html">Publications</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>联系方式</h4>
-                    <p>邮箱：contact@lab.edu</p>
-                    <p>地址：[实验室所在地址]</p>
+                    <h4>Contact</h4>
+                    <p>contact@fanlab.seu.edu.cn</p>
+                    <p style="margin-top: 0.5rem;">Southeast University<br>Nanjing, China</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 研究实验室. 保留所有权利。</p>
+                <p>&copy; 2026 <span style="color: var(--gold);">Fanlab</span>, Southeast University. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -294,16 +297,16 @@
                 grid-template-columns: 1fr !important;
             }
         }
-    </style>
-
     <script>
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('open');
+        });
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('感谢您的消息！我们会尽快联系您。');
+            alert('Thank you for your message! We will contact you as soon as possible.');
             this.reset();
         });
     </script>
-
-    <script src="../js/main.js"></script>
 </body>
 </html>
