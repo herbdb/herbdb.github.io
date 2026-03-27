@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Dongbiao He | Academic Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #006600; /* Southeast University Green */
+            --secondary-color: #f0f8e0; /* Light green */
+            --text-color: #333;
+            --light-text: #666;
+            --border-color: #e5e7eb;
+            --accent-color: #f0f8e0; /* Light green accent */
+            --link-color: #2563eb;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 0 0 60px 0;
+        }
+        
+        .navbar-inverse {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .navbar-inverse .navbar-brand {
+            color: #FFD700; /* Gold */
+        }
+        
+        .navbar-inverse .navbar-nav > li > a {
+            color: #FFD700;
+        }
+        
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: white;
+        }
+        
+        .container-fluid {
+            padding: 20px;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .publication-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--secondary-color);
+            border-radius: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><font size="5">Dongbiao He</font></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#teaching">Teaching</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img src="pic/herb.png" class="img-responsive profile-image" />
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>Dongbiao He</h3>
+                        <p>Associate Professor</p>
+                        <p><a href="https://www.seu.edu.cn/">Southeast University</a></p>
+                        <p>School of Computer Science and Engineering</p>
+                        <p>Nanjing, Jiangsu</p>
+                        <p>Email: hdb@seu.edu.cn</p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h3 id="about">About Me</h3>
+                <p>I am an Associate Professor at School of Computer Science and Engineering, Southeast University. My research focuses on distributed computing, cloud networks, and next-generation Internet protocols. I received my Ph.D. from Tsinghua University and previously worked as an R&D Technical Expert at Sangfor Technologies. I am committed to advancing knowledge in networking technologies and mentoring the next generation of researchers.</p>
+
+                <hr />
+
+                <h3 id="education">Education</h3>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <p><strong>Ph.D.</strong></p>
+                    </div>
+                    <div class="col-sm-7">
+                        <p><i>Department of Computer Science</i>, Tsinghua University</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>2013 - 2019</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p><strong>B.S.</strong></p>
+                    </div>
+                    <div class="col-sm-7">
+                        <p><i>Department of Computer Science</i>, Jilin University</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>2009 - 2013</p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h3 id="experience">Professional Experience</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Associate Professor</strong>, Computer Network Information Center, Chinese Academy of Sciences (2024 - 2025)</li>
+                    <li><strong>R&D Technical Expert</strong>, Sangfor Technologies Inc., Shenzhen (2019 - 2024)</li>
+                    <li><strong>Postdoctoral Researcher</strong>, Tsinghua University, Shenzhen (2020 - 2022)</li>
+                </ul>
+
+                <hr />
+
+                <h3 id="research">Research Interests</h3>
+                <ul>
+                    <li>Integrated Space-Ground Network</li>
+                    <li>Next-generation Internet Protocol</li>
+                    <li>Application-aware Networking</li>
+                </ul>
+
+                <hr />
+
+                <h3 id="projects">Current Projects</h3>
+                <ul>
+                    <li>Integrated Space-Ground Network Architecture</li>
+                    <li>The Design of Integrated Space-Ground Network Transport Layer Protocol</li>
+                </ul>
+
+                <hr />
+
+                <h3 id="teaching">Teaching</h3>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="well">
+                            <h4>Computer Networks</h4>
+                            <p>Undergraduate course covering fundamental concepts in networking, protocols, and applications.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                            <h4>Distributed Systems</h4>
+                            <p>Graduate course exploring principles and practices of distributed computing.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="well">
+                            <h4>Advanced Networking</h4>
+                            <p>Research-oriented course focusing on next-generation networking technologies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <h3 id="opportunities">Opportunities for Students</h3>
+                <p>I am seeking motivated graduate and undergraduate students interested in networking and distributed systems. Opportunities include:</p>
+                <ul>
+                    <li>Participation in cutting-edge research projects leading to high-quality publications</li>
+                    <li>Internship opportunities with industry partners</li>
+                    <li>Attendance at international conferences and academic exchanges</li>
+                    <li>Personalized mentorship and career development support</li>
+                </ul>
+                <p>If you are interested in joining my research group, please send your CV and research interests to <a href="mailto:hdb@seu.edu.cn">hdb@seu.edu.cn</a>.</p>
+
+                <hr />
+
+                <h3 id="publications">Publications</h3>
+                <ul style="overflow: hidden">
+                    <!-- 2025 Publications -->
+                    <li>A Comprehensive Benchmark and Empirical Study of Trace Anomaly Detection. <br />
+                        IEEE Transactions on Services Computing (TSC), 2025<br />
+                        <a href="https://doi.ieeecomputersociety.org/10.1109/TSC.2025.3622122">PDF</a> | 
+                        <a href="https://github.com/nkalgo/TADBench">Code</a>
+                    </li>
+                    <li>FlexLoad：异构边缘环境下的QoS驱动式应用调度机制. <br />
+                        CCF Chinanet 2025 (获优秀论文奖), 2025
+                    </li>
+                    <li>Achieving High-Speed and Robust Encrypted Traffic Anomaly Detection with Programmable Switches. <br />
+                        ACM SIGCOMM (short paper), 2025<br />
+                        <a href="https://doi.org/10.1145/3718958.3750493">PDF</a>
+                    </li>
+                    <li>Enhancing Video Conference Applications with VCApather: A Network as a Service Perspective. <br />
+                        ACM Transactions on Multimedia Computing, Communications, and Applications, 2025<br />
+                        <a href="https://doi.org/10.1145/3732780">PDF</a>
+                    </li>
+                    <li>DATTA: Domain Diversity Aware Test-Time Adaptation for Dynamic Domain Shift Data Streams (Oral). <br />
+                        IEEE International Conference on Multimedia&Expo (ICME), 2025<br />
+                        <a href="https://doi.org/10.1109/ICME59968.2025.11209053">PDF</a> | 
+                        <a href="https://github.com/DYW77/DATTA">Code</a>
+                    </li>
+                    <li>Utilizing Contrastive Learning for Locating Network Anomalies in Real-time Conferencing Applications (Oral). <br />
+                        IEEE International Conference on Multimedia&Expo (ICME), 2025<br />
+                        <a href="https://doi.org/10.1109/ICME59968.2025.11209310">PDF</a>
+                    </li>
+                    <li>LLM4Band: Enhancing Reinforcement Learning with Large Language Models for Accurate Bandwidth Estimation. <br />
+                        ACM Network and Operating System Support for Digital Audio and Video (NOSSDAV), 2025<br />
+                        <a href="https://doi.org/10.1145/3712678.3721880">PDF</a> | 
+                        <a href="https://github.com/WzjCoder/LLM4Band">Code</a>
+                    </li>
+                    <!-- Add more publications similarly -->
+                </ul>
+
+                <hr />
+
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 Dongbiao He. All rights reserved.
+    </div>
+</body>
+</html>
