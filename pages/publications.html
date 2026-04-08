@@ -8,6 +8,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/unified.css">
+    <style>
+        /* ── Publication List Styles ── */
+        .publications-list {
+            padding: 60px 20px;
+            background-color: var(--white);
+        }
+        .year-section {
+            margin-bottom: 3.5rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .year-heading {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--ink, #1a1a2e);
+            border-bottom: 2px solid var(--border, #e2ddd8);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .pub-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pub-item {
+            padding: 1.2rem 0;
+            border-bottom: 1px dashed var(--border, #e2ddd8);
+            transition: background-color 0.2s ease;
+        }
+        .pub-item:hover {
+            background-color: var(--sand, #f7f3ee);
+            border-radius: 8px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+        .pub-item:last-child {
+            border-bottom: none;
+        }
+        .pub-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink, #1a1a2e);
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+        .pub-authors {
+            font-size: 0.95rem;
+            color: var(--text-dark, #4a4a5a);
+            margin-bottom: 0.3rem;
+        }
+        .pub-venue {
+            font-size: 0.9rem;
+            color: var(--accent, #c0392b);
+            font-style: italic;
+            font-weight: 500;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            font-style: normal;
+            letter-spacing: 0.05em;
+        }
+        .badge.ccf-a { background: #ffebee; color: #c62828; }
+        .badge.ccf-b { background: #e3f2fd; color: #1565c0; }
+        .badge.ccf-c { background: #f5f5f5; color: #616161; }
+        .badge.jcr-q1 { background: #e8f5e9; color: #2e7d32; }
+        .badge.oral { background: #fff8e1; color: #f57f17; }
+    </style>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -20,7 +96,6 @@
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="publications.html" class="active">Publications</a></li>
@@ -40,111 +115,357 @@
 
     <!-- Main Content -->
     <main>
-        <section class="publications-stats">
-            <div class="container">
-                <div class="stats-grid" style="background-color: transparent;">
-                    <div class="stat-item" style="background-color: var(--light-bg); padding: 2rem; border-radius: 10px;">
-                        <h3>50+</h3>
-                        <p>Published Papers</p>
-                    </div>
-                    <div class="stat-item" style="background-color: var(--light-bg); padding: 2rem; border-radius: 10px;">
-                        <h3>15+</h3>
-                        <p>Top-Tier Journals</p>
-                    </div>
-                    <div class="stat-item" style="background-color: var(--light-bg); padding: 2rem; border-radius: 10px;">
-                        <h3>300+</h3>
-                        <p>Total Citations</p>
-                    </div>
-                    <div class="stat-item" style="background-color: var(--light-bg); padding: 2rem; border-radius: 10px;">
-                        <h3>8.5</h3>
-                        <p>Average Impact Factor</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="publications-list">
             <div class="container">
-                <h2>Latest Publications</h2>
                 
-                <div class="publication">
-                    <h3>Deep Neural Networks for Complex Pattern Recognition</h3>
-                    <p class="authors"><strong>Authors:</strong> Zhang L., Wang M., Li H., et al.</p>
-                    <p class="journal"><strong>Journal:</strong> IEEE Transactions on Pattern Analysis and Machine Intelligence</p>
-                    <p class="year"><strong>Published:</strong> 2026</p>
-                    <p class="abstract">This paper presents a novel deep neural network architecture achieving significant performance improvements on complex pattern recognition tasks. The method achieved 98.7% accuracy on the ImageNet dataset, surpassing existing state-of-the-art approaches.</p>
-                    <a href="#" class="btn btn-primary">View Details</a>
+                <!-- 2026 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2026</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">Bridging the GPU Utilization Gap: Predictive Multi-Dimensional Resource Scheduling for AI Workloads <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Yilei Lu, <b>Dongbiao He*</b>, Teng Ma, Zhe Liu, Letian Ruan, Jinlei Jiang, Yongwei Wu</div>
+                            <div class="pub-venue">EuroSys 2026</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">LightDSA: Enabling Efficient DSA Through Hardware-Aware Transparent Optimization <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Yuansen Wang, Teng Ma, Yuanhui Luo, <b>Dongbiao He</b>, Zheng Liu, Yunpeng Cha</div>
+                            <div class="pub-venue">EuroSys 2026</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">SkipTrie: Fast IPv6 Lookup with Sub-Trie Skipping <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Donghong Jiang, Yanbiao Li, Shi Meng, Yuxuan Chen, Taiji Chen, Xian Yu, <b>Dongbiao He</b>, Gaogang Xie</div>
+                            <div class="pub-venue">IEEE INFOCOM 2026</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">SwiftShift: Accelerating QUIC Migration for Ultra-Low-Latency Interactive Media <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Fangshuo Han, <b>Dongbiao He*</b>, Xian Yu, Heng Pan, Xiaohui Nie, Yanbiao Li</div>
+                            <div class="pub-venue">ACM NOSSDAV 2026</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Shard: A Scalable and Resize-optimized Hash Index on Disaggregated Memory <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Hantian Zha, Teng Ma, Baotong Lu, Yuansen Wang, <b>Dongbiao He</b>, Yuanhui Luo, Dafang Zhang, Yunpeng Chai, Yuxing Chen, Anqun Pan</div>
+                            <div class="pub-venue">VLDB 2026 (Proceedings of the VLDB Endowment)</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">From rigid isolation to elastic integration: Progressively unified resource allocation in ISAC for value of service maximization <span class="badge jcr-q1">JCR-Q1</span> <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Biwei Li, Xianbin Wang, Nan Zhao, and Dusit Niyato</div>
+                            <div class="pub-venue">IEEE Transactions on Communications, 2026</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">MegaTurbo: A Scalable FPGA-based Engine for MegaFlow Classifier in Open vSwitch <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Sheng Lan, Ying Li, Zhongxian Liang, Wenjun Li, Yao Xin, Ying Wan, Hui Li, Weizhe Zhang</div>
+                            <div class="pub-venue">ACM/SIGDA International Symposium on Field-Programmable Gate Arrays (FPGA), 2026</div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="publication">
-                    <h3>Quantum Computing Algorithms for Optimization Problems</h3>
-                    <p class="authors"><strong>Authors:</strong> Wang M., Zhang L., Chen X., et al.</p>
-                    <p class="journal"><strong>Journal:</strong> Nature Physics</p>
-                    <p class="year"><strong>Published:</strong> 2026</p>
-                    <p class="abstract">This research develops novel quantum algorithms for solving large-scale combinatorial optimization problems. Compared to classical approaches, the algorithm demonstrates 100x improvement in computational efficiency.</p>
-                    <a href="#" class="btn btn-primary">View Details</a>
+                <!-- 2025 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2025</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">A Comprehensive Benchmark and Empirical Study of Trace Anomaly Detection <span class="badge jcr-q1">JCR-Q1</span> <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Yongqian Sun, Minyi Shao, Xiaohui Nie, Kaiwen Yang, Xingda Li, Bowen Hao, Shenglin Zhang, Changhua Pei, <b>Dongbiao He</b>, Yanbiao Li, Dan Pei</div>
+                            <div class="pub-venue">IEEE Transactions on Services Computing (TSC), 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Achieving High-Speed and Robust Encrypted Traffic Anomaly Detection with Programmable Switches <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Han Zhang, Guyue Liu, Xingang Shi, Yahui Li, <b>Dongbiao He</b>, Jilong Wang, Zhiliang Wang, Yongqing Zhu, Ke Ruan, Weihua Cao, Xia Yin</div>
+                            <div class="pub-venue">ACM SIGCOMM 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Enhancing Video Conference Applications with VCApather: A Network as a Service Perspective <span class="badge jcr-q1">JCR-Q1</span> <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors"><b>Dongbiao He</b>, Xian Yu, Canshu Lin, Cedric Westphal, Zhongxing Ming, Laizhong Cui, Xu Zhou, J.J Garcia-Luna-Aceves, Yanbiao Li</div>
+                            <div class="pub-venue">ACM TOMM, 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">DATTA: Domain Diversity Aware Test-Time Adaptation for Dynamic Domain Shift Data Streams <span class="badge ccf-b">CCF-B</span> <span class="badge oral">Oral</span></div>
+                            <div class="pub-authors">Chuyang Ye, Dongyan Wei, Zhendong Liu, Yuanyi Pang, Yixi Lin, Qinting Jiang, Jingyan Jiang, <b>Dongbiao He</b></div>
+                            <div class="pub-venue">IEEE ICME 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Utilizing Contrastive Learning for Locating Network Anomalies in Real-time Conferencing Applications <span class="badge ccf-b">CCF-B</span> <span class="badge oral">Oral</span></div>
+                            <div class="pub-authors">Teng Ma, <b>Dongbiao He</b>, Zhongxing Ming, Junhao Xu, Laizhong Cui, Yunpeng Chai</div>
+                            <div class="pub-venue">IEEE ICME 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">LLM4Band: Enhancing Reinforcement Learning with Large Language Models for Accurate Bandwidth Estimation <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Zhijian Wang, Rongwei Lu, Zhiyang Zhang, Cedric Westphal, <b>Dongbiao He*</b>, Jingyan Jiang</div>
+                            <div class="pub-venue">ACM NOSSDAV 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Spatial-temporal resource optimization through opportunistic reuse in multi-user ISAC system for value of service maximization <span class="badge jcr-q1">JCR-Q1</span> <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Biwei Li, and Xianbin Wang</div>
+                            <div class="pub-venue">IEEE Transactions on Wireless Communications, 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Integration gain maximization in ISAC systems through adaptive unified resource allocation</div>
+                            <div class="pub-authors">Biwei Li, and Xianbin Wang</div>
+                            <div class="pub-venue">IEEE ICC 2025, Montreal, Canada</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">DeFlow: Differential flowlet switching for load balancing in datacenter networks <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Yu Jia, Yi Wang, Ling Qian, and Tian Pan</div>
+                            <div class="pub-venue">Computer Networks, 2025</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">LAPS: Joint Load Balancing and Congestion Control on Unequal-cost Multi-path Data Center Networks</div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Yu Jia, Yunhui Yang, Tao Huang, Zhikang Chen</div>
+                            <div class="pub-venue">SIGCOMM Workshop On NAIC (NAIC 2025)</div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="publication">
-                    <h3>Genomic Analysis and Disease Prediction Using Machine Learning</h3>
-                    <p class="authors"><strong>Authors:</strong> Li H., Zhou J., Yang J., et al.</p>
-                    <p class="journal"><strong>Journal:</strong> Nature Genetics</p>
-                    <p class="year"><strong>Published:</strong> 2025</p>
-                    <p class="abstract">Using machine learning techniques to analyze genomic data, this work successfully developed a novel disease prediction model that achieves 96% accuracy in clinical applications.</p>
-                    <a href="#" class="btn btn-primary">View Details</a>
+                <!-- 2024 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2024</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">MLPing: Real-time Proactive Fault Detection and Alarm for Large-scale Distributed IDC Network <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Xian Yu, Kejiang Ye, <b>Dongbiao He</b>, Xiaofan Chen, Chengzhong Xu, Jianhui Li, Gaogang Xie</div>
+                            <div class="pub-venue">IEEE ICDCS 2024</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">LogGenius: An Unsupervised Log Parsing Framework with Zero-shot Prompt Engineering <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Xian Yu, Shengxi Nong, <b>Dongbiao He*</b>, Weijie Zheng, Teng Ma, Ning Liu, Jianhui Li, Gaogang Xie</div>
+                            <div class="pub-venue">IEEE ICWS 2024</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">VCApather: A Network as a Service Solution for Video Conference Applications <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors"><b>Dongbiao He</b>, Canshu Lin, Xian Yu, Cedric Westphal, Zhongxing Ming, Laizhong Cui, Xu Zhou, J.J Garcia-Luna-Aceves</div>
+                            <div class="pub-venue">ACM NOSSDAV 2024</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Maximizing the value of service provisioning in multi-user ISAC systems through fairness guaranteed collaborative resource allocation <span class="badge jcr-q1">JCR-Q1</span> <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Biwei Li, Xianbin Wang, and Fang Fang</div>
+                            <div class="pub-venue">IEEE Journal on Selected Areas in Communications, 2024</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Successive resource allocation in multi-user ISAC system through deep reinforcement learning</div>
+                            <div class="pub-authors">Biwei Li, Xianbin Wang, Sungjun Ahn, Sung-Ik Park, and Yiyan Wu</div>
+                            <div class="pub-venue">IEEE ICC 2024, Denver, CO, USA</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">OBMA: Scalable Route Lookups with Fast and Zero-interrupt Updates <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Chuwen Zhang, Yong Feng, Haoyu Song, Ying Wan, Wenquan Xu, Bin Liu</div>
+                            <div class="pub-venue">IEEE/ACM Transactions on Networking (TON), 2024</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Accelerating Mega-Scale Satellite Network Simulation in NS-3 via MPI-based Parallelization <span class="badge ccf-c">CCF-C</span></div>
+                            <div class="pub-authors">Haibin Song, Tian Pan, Guohao Ruan, Yan Zheng, Ying Wan, Jiao Zhang, Tao Huang, and Yunjie Liu</div>
+                            <div class="pub-venue">IEEE International Conference on Communications (ICC), 2024</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">HyperSFC: State-Intensive Service Function Chaining on Hyper-Converged Edge Infrastructure <span class="badge ccf-c">CCF-C</span></div>
+                            <div class="pub-authors">Zou, Yan, Tian Pan*, Lu Lu, Zhiqiang Li*, Kehan Yao, Yan Mu, Ying Wan*, Tao Huang, and Yunjie Liu</div>
+                            <div class="pub-venue">IFIP Networking Conference (Networking), 2024</div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="publication">
-                    <h3>Distributed System Architecture for Large-Scale Data Processing</h3>
-                    <p class="authors"><strong>Authors:</strong> Liu L., Wu J., Chen X., et al.</p>
-                    <p class="journal"><strong>Journal:</strong> ACM Transactions on Computer Systems</p>
-                    <p class="year"><strong>Published:</strong> 2025</p>
-                    <p class="abstract">Designed and implemented an efficient distributed system architecture for processing massive datasets. This system achieves 50% higher throughput compared to existing solutions.</p>
-                    <a href="#" class="btn btn-primary">View Details</a>
+                <!-- 2023 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2023</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">Felinet: Accelerating Federated Learning Convergence in Heterogeneous Edge Networks</div>
+                            <div class="pub-authors">Canshu Lin, <b>Dongbiao He</b>, Zhongxing Ming, Laizhong Cui</div>
+                            <div class="pub-venue">ACM MobiCom Workshop 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">FogEye: Towards Performance Efficient Fog Networking Telemetry</div>
+                            <div class="pub-authors">Simian Chen, <b>Dongbiao He</b>, Zhongxing Ming, Laizhong Cui</div>
+                            <div class="pub-venue">IEEE Globecom Workshop 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">WAN-INT: Cost-Effective In-Band Network Telemetry in WAN With A Performance-aware Path Planner</div>
+                            <div class="pub-authors">Simian Chen, <b>Dongbiao He</b>, Xiaopeng Ma, Zhongxing Ming, Laizhong Cui</div>
+                            <div class="pub-venue">IEEE ICPADS 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Delay Based Congestion Control for Cross-Datacenter Networks <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Yantao Geng, Han Zhang, Xingang Shi, Jilong Wang, Xia Yin, <b>Dongbiao He</b>, Yahui Li</div>
+                            <div class="pub-venue">IEEE IWQoS 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Value of service maximization in integrated localization and communication system through joint resource allocation <span class="badge jcr-q1">JCR-Q1</span> <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Biwei Li, Xianbin Wang, Yan Xin, and Edward Au</div>
+                            <div class="pub-venue">IEEE Transactions on Communications, 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Joint localization and environment sensing of rigid body with 5G millimeter wave MIMO</div>
+                            <div class="pub-authors">Biwei Li, Xianbin Wang, Edward Au, and Yan Xin</div>
+                            <div class="pub-venue">IEEE Open Journal of Signal Processing, 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Multi-camera collaboration for 3D visualization via correlated information maximization</div>
+                            <div class="pub-authors">Ruitao Chen, Biwei Li, and Xianbin Wang</div>
+                            <div class="pub-venue">IEEE Internet of Things Journal, 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Multi-Stage Flow Table Caching: From Theory to Algorithm <span class="badge ccf-c">CCF-C</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Tian Pan, Bin Liu, Yu Jia, Ling Qian</div>
+                            <div class="pub-venue">IEEE Symposium on Computers and Communications (ISCC), 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">FlowBench: A Flexible Flow Table Benchmark for Comprehensive Algorithm Evaluation <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Chen, Zhikang, Ying Wan, Ting Zhang, Haoyu Song, and Bin Liu</div>
+                            <div class="pub-venue">IEEE INFOCOM 2023</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">CoLUE: Collaborative TCAM Update in SDN Switches <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Ruyi Yao, Cong Luo, Hao Mei, Chuhao Chen, Wenjun Li, Ying Wan, Sen Liu, Bin Liu, Yang Xu</div>
+                            <div class="pub-venue">IEEE INFOCOM 2023</div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="publication">
-                    <h3>Blockchain-based Secure Data Sharing Protocol</h3>
-                    <p class="authors"><strong>Authors:</strong> Chen X., Zhang C., Liu L., et al.</p>
-                    <p class="journal"><strong>Journal:</strong> IEEE Transactions on Information Forensics and Security</p>
-                    <p class="year"><strong>Published:</strong> 2025</p>
-                    <p class="abstract">Proposes a blockchain-based secure data sharing protocol implementing efficient access control and audit capabilities. The protocol has been validated in multiple real-world applications.</p>
-                    <a href="#" class="btn btn-primary">View Details</a>
+                <!-- 2022 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2022</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">GreedyJump: A Fast TCAM Update Algorithms</div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Bin Liu</div>
+                            <div class="pub-venue">IEEE Networking Letters (LNET), 2022</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">BubbleTCAM: Bubble Reservation in SDN Switches for Fast TCAM Update <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Cong Luo, Chuhao Chen, Hao Mei, Ruyi Yao, Ying Wan, Wenjun Li, Sen Liu, Bin Liu, Yang Xu</div>
+                            <div class="pub-venue">IEEE/ACM IWQoS 2022</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Enabling In-situ Programmability in Network Data Plane: From Architecture to Language <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Yong Feng, Zhikang Chen, Haoyu Song, Wenquan Xu, Jiahao Li, Zijian Zhang, Tong Yun, Ying Wan, Bin Liu</div>
+                            <div class="pub-venue">USENIX NSDI 2022</div>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="text-center" style="margin-top: 3rem;">
-                    <a href="#" class="btn btn-secondary">View All Papers</a>
+                <!-- 2021 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2021</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">HybridSkipList: A Case Study of Designing Distributed Data Structure with Hybrid RDMA</div>
+                            <div class="pub-authors">Teng Ma, <b>Dongbiao He</b>, Gordon Ning Liu</div>
+                            <div class="pub-venue">IEEE COMPSAC 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Qualitative Communications for Augmented Reality and Virtual Reality</div>
+                            <div class="pub-authors">Cédric Westphal, <b>Dongbiao He</b>, Kiran Makhijani, Richard Li</div>
+                            <div class="pub-venue">IEEE HPSR 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">CUBIST: High-Quality 360-Degree Video Streaming via Edge Caching and User Adaptation <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors"><b>Dongbiao He</b>, Jinlei Jiang, Teng Ma, Guangwen Yang, Cédric Westphal, J. J. Garcia-Luna Aceves, Shu-Tao Xia</div>
+                            <div class="pub-venue">IEEE ICWS 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">A high efficient multi-robot simultaneous localization and mapping system using partial computing offloading assisted cloud point registration strategy</div>
+                            <div class="pub-authors">Biwei Li, Zhenqiang Mi, Yu Guo, Yang Yang, and Mohammad S. Obaidat</div>
+                            <div class="pub-venue">Journal of Parallel and Distributed Computing, 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Rigid body localization and environment sensing with 5G millimeter wave MIMO</div>
+                            <div class="pub-authors">Biwei Li, and Xianbin Wang</div>
+                            <div class="pub-venue">IEEE VTC2021-Fall, 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">T-Cache: Efficient Policy-Based Forwarding Using Small TCAM <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Yang Xu, Yilun Wang, Tian Pan, Chuwen Zhang, Yi Wang, Bin Liu</div>
+                            <div class="pub-venue">IEEE/ACM Transactions on Networking (TON), 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">MagicTCAM: A Multiple-TCAM Scheme for Fast TCAM Update <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Ruyi Yao, Cong Luo, Xuandong Liu, Ying Wan, Bin Liu, Wenjun Li, Yang Xu</div>
+                            <div class="pub-venue">IEEE ICNP 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">FastUp: Fast TCAM Update for SDN Switches in Datacenter Networks <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Hao Che, Yang Xu, Yi Wang, Chuwen Zhang, Zhijun Wang, Tian Pan, Hao Li, Hong Jiang, Chengchen Hu, Bin Liu</div>
+                            <div class="pub-venue">IEEE ICDCS 2021</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">Adaptive Batch Update in TCAM: How Collective Optimization Beats Individual Ones <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Yang Xu, Chuwen Zhang, Yi Wang, Bin Liu</div>
+                            <div class="pub-venue">IEEE INFOCOM 2021</div>
+                        </li>
+                    </ul>
                 </div>
+
+                <!-- 2020 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2020</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">PBC: Effective Prefix Caching for Fast Name Lookups <span class="badge ccf-c">CCF-C</span></div>
+                            <div class="pub-authors">Chuwen Zhang, Yong Feng, Haoyu Song, Beichuan Zhang, Yi Wang, Ying Wan, Wenquan Xu, Bin Liu</div>
+                            <div class="pub-venue">IFIP Networking Conference (Networking), 2020</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">FastUp: Compute a Better TCAM Update Scheme in Less Time for SDN Switches <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Hao Che, Yang Xu, Yi Wang, Chuwen Zhang, Zhijun Wang, Tian Pan, Hao Li, Hong Jiang, Chengchen Hu, Bin Liu</div>
+                            <div class="pub-venue">IEEE ICDCS (Poster), 2020</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">T-cache: Dependency-free Ternary Rule Cache for Policy-based Forwarding <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Ying Wan, Haoyu Song, Yang Xu, Yilun Wang, Tian Pan, Chuwen Zhang, Bin Liu</div>
+                            <div class="pub-venue">IEEE INFOCOM 2020</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">P3R: Realizing Robust Routing for VANET Using Trajectory Prediction and Crossroad Recognition <span class="badge ccf-c">CCF-C</span></div>
+                            <div class="pub-authors">Chuwen Zhang, Huichen Dai, Yong Feng, Yang Li, Wenquan Xu, Xuefeng Ji, Ying Wan, Gong Zhang, Bin Liu</div>
+                            <div class="pub-venue">IEEE ICPADS 2020</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2018 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2018</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">Ultra-fast Bloom filters using SIMD techniques <span class="badge ccf-a">CCF-A</span></div>
+                            <div class="pub-authors">Jianyuan Lu, Ying Wan, Yang Li, Chuwen Zhang, Huichen Dai, Yi Wang, Gong Zhang, Bin Liu</div>
+                            <div class="pub-venue">IEEE Transactions on Parallel and Distributed Systems (TPDS), 2018</div>
+                        </li>
+                        <li class="pub-item">
+                            <div class="pub-title">OBMA: Minimizing bitmap data structure with fast and uninterrupted update processing <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Chuwen Zhang, Yong Feng, Haoyu Song, Ying Wan, Wenquan Xu, Yilun Wang, Huichen Dai, Yang Li, Bin Liu</div>
+                            <div class="pub-venue">IEEE/ACM IWQoS (Short Paper), 2018</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2017 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2017</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">Ultra-Fast Bloom Filters using SIMD techniques <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Jianyuan Lu, Ying Wan, Yang Li, Chuwen Zhang, Huichen Dai, Yi Wang, Gong Zhang, Bin Liu</div>
+                            <div class="pub-venue">IEEE/ACM IWQoS (Short Paper), 2017</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2016 -->
+                <div class="year-section">
+                    <h2 class="year-heading">2016</h2>
+                    <ul class="pub-list">
+                        <li class="pub-item">
+                            <div class="pub-title">A Probabilistic Distance-Based Modeling and Analysis for Cellular Networks With Underlaying Device-to-Device Communications <span class="badge ccf-b">CCF-B</span></div>
+                            <div class="pub-authors">Fei Tong, Ying Wan, Lei Zheng, Jianping Pan, and Lin Cai</div>
+                            <div class="pub-venue">IEEE Transactions on Wireless Communications (TWC), 2016</div>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 
-        <section class="publication-categories">
-            <div class="container">
-                <h2>Paper Categories</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>Artificial Intelligence</h3>
-                        <p>Research in deep learning, natural language processing, and computer vision</p>
-                        <p style="font-weight: bold; color: var(--secondary-color);">15 papers</p>
-                    </div>
-                    <div class="card">
-                        <h3>Systems & Architecture</h3>
-                        <p>Research in distributed systems, operating systems, and cloud computing</p>
-                        <p style="font-weight: bold; color: var(--secondary-color);">12 papers</p>
-                    </div>
-                    <div class="card">
-                        <h3>Theory & Algorithms</h3>
-                        <p>Research in quantum computing, algorithm design, and complexity theory</p>
-                        <p style="font-weight: bold; color: var(--secondary-color);">10 papers</p>
-                    </div>
-                    <div class="card">
-                        <h3>Applications & Innovation</h3>
-                        <p>Research in bioinformatics, IoT, and blockchain applications</p>
-                        <p style="font-weight: bold; color: var(--secondary-color);">13 papers</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->

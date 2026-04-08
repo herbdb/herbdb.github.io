@@ -102,7 +102,8 @@
         /* ── Hero Section ── */
         .hero {
             background: var(--ink);
-            padding: 110px 2rem 80px;
+            /* Reduced padding to make the hero section shorter */
+            padding: 70px 2rem 50px; 
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -179,60 +180,94 @@
             border-radius: 20px;
         }
 
-        /* ── Statistics (Grid) ── */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+        /* ── Lab Group Photo Section ── */
+        .lab-photo-section {
+            padding: 60px 2rem 20px; /* Less padding at bottom to flow into next section */
+            background: var(--sand);
         }
-        .stat-item {
-            background: var(--white);
-            padding: 2rem;
+        .lab-photo-container {
             border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            background: #d4cfc8; /* Fallback color */
         }
-        .stat-item h3 {
+        .lab-photo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .lab-photo-container:hover img {
+            transform: scale(1.02);
+        }
+        .lab-photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(26,26,46,0.9) 0%, transparent 100%);
+            padding: 4rem 2rem 1.5rem;
+            color: var(--white);
+            pointer-events: none;
+        }
+        .lab-photo-caption h3 {
             font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+            letter-spacing: 0.02em;
         }
-        .stat-item p {
-            color: var(--muted);
-            font-weight: 500;
+        .lab-photo-caption p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
         }
 
-        /* ── Research Cards ── */
+        /* ── Research Cards (Updated for Images) ── */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.8rem;
         }
         .card {
             background: var(--white);
             border-radius: var(--radius);
-            padding: 2rem 1.8rem 1.6rem;
             text-align: center;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
             transition: transform .28s ease, box-shadow .28s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-lg);
         }
+        .card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-content {
+            padding: 1.8rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
         .card h3 {
             font-family: var(--font-serif);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 1rem;
             color: var(--ink);
         }
         .card p {
             color: var(--muted);
             font-size: .95rem;
-            margin-bottom: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 0;
         }
 
         /* ── News Section ── */
@@ -296,6 +331,10 @@
         .btn-outline:hover {
             border-color: var(--ink);
             background: var(--sand);
+        }
+        .text-center {
+            text-align: center;
+            margin-top: 2rem;
         }
 
         /* ── Footer ── */
@@ -363,6 +402,9 @@
             .hero-content h1 {
                 font-size: 2.5rem;
             }
+            .lab-photo-caption {
+                padding: 2rem 1.5rem 1rem;
+            }
         }
     </style>
 </head>
@@ -378,7 +420,6 @@
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="pages/about.html">About</a></li>
                 <li><a href="pages/research.html">Research</a></li>
                 <li><a href="pages/team.html">Team</a></li>
                 <li><a href="pages/publications.html">Publications</a></li>
@@ -397,35 +438,21 @@
     </section>
 
     <main>
-        <!-- Statistics -->
-        <section class="section-wrap">
+        <!-- Lab Group Photo Section -->
+        <section class="lab-photo-section">
             <div class="container">
-                <div class="section-header">
-                    <span class="label">Impact</span>
-                    <h2>Our Key Metrics</h2>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>50+</h3>
-                        <p>Publications</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>20+</h3>
-                        <p>Active Projects</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>30+</h3>
-                        <p>Team Members</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>10+</h3>
-                        <p>International Partners</p>
+                <div class="lab-photo-container">
+                    <!-- 替换此处的 src 为您真实的合影图片路径 -->
+                    <img src="image/research/heying.jpg" alt="Fanlab Research Team Group Photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Q0Y2ZjOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZhNmE3YSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R3JvdXAgUGhvdG8gUGxhY2Vob2xkZXI8L3RleHQ+PC9zdmc+'">
+                    <div class="lab-photo-caption">
+                        <h3>Fanlab Research Team</h3>
+                        <p>Southeast University, Nanjing</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Research Areas -->
+        <!-- Research Areas (Updated) -->
         <section class="section-wrap" style="background: var(--white);">
             <div class="container">
                 <div class="section-header">
@@ -433,22 +460,43 @@
                     <h2>Research Directions</h2>
                 </div>
                 <div class="research-grid">
+                    <!-- Card 1: 智算网络技术 -->
                     <div class="card">
-                        <h3>Network Fundamentals</h3>
-                        <p>Exploring advanced network theory and fundamental technologies that shape the future of connectivity.</p>
-                    </div>
+                        <img src="image/research/an.png" alt="Agentic Network" class="card-img">
+                        <div class="card-content">
+                            <h3>Agentic Network</h3>
+                            <p>Leveraging autonomous AI agents to build self-evolving and highly efficient network ecosystems for next-generation connectivity.</p>
+                        </div>
+                    </div>  
+                    <!-- Card 2: 新型工业互联网协议 -->
                     <div class="card">
-                        <h3>Technology Innovation</h3>
-                        <p>Developing cutting-edge network technologies and solutions at the frontier of what's possible.</p>
+                        <img src="image/research/ind.png" alt="New Industrial Internet Protocols" class="card-img">
+                        <div class="card-content">
+                            <h3>New Industrial Networking Protocols</h3>
+                            <p>Designing deterministic, ultra-low latency protocols tailored for next-generation industrial automation and robust IoT ecosystems.</p>
+                        </div>
                     </div>
+                    <!-- Card 3: 空天地一体化 -->
                     <div class="card">
-                        <h3>International Collaboration</h3>
-                        <p>Establishing partnerships with leading research institutions worldwide to advance shared goals.</p>
+                        <img src="image/research/ktd.jpg" alt="Space-Air-Ground Integrated Networks" class="card-img">
+                        <div class="card-content">
+                            <h3>Space-Air-Ground Integrated Networks</h3>
+                            <p>Constructing seamless, ubiquitous connectivity across satellite, aerial, and terrestrial network segments for global coverage.</p>
+                        </div>
                     </div>
+                    <!-- Card 4: 6G通信 -->
                     <div class="card">
-                        <h3>Talent Cultivation</h3>
-                        <p>Training high-quality researchers and academic successors ready to lead the next generation.</p>
+                        <img src="image/research/6g.png" alt="6G Communications" class="card-img">
+                        <div class="card-content">
+                            <h3>6G Communications</h3>
+                            <p>Pioneering the future of extreme connectivity, terahertz communications, and semantic networks for the upcoming 6G era.</p>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- View More Research Button -->
+                <div class="text-center">
+                    <a href="pages/research.html" class="btn btn-outline">View More Research</a>
                 </div>
             </div>
         </section>
@@ -456,27 +504,33 @@
         <!-- Latest News -->
         <section class="section-wrap">
             <div class="container">
-                <div class="section-header">
-                    <span class="label">Updates</span>
-                    <h2>Latest News</h2>
+                 <div class="section-header">
+                <span class="label">Updates</span>
+                <h2>Latest News</h2>
                 </div>
-                <div class="news-item">
-                    <div class="news-date">2026 · 03 · 27</div>
-                    <h3>Major Research Breakthrough Announced</h3>
-                    <p>Our team achieved significant breakthroughs in advanced network research. Related papers have been published in top-tier international journals.</p>
-                    <a href="pages/news.html">Read More →</a>
-                </div>
-                <div class="news-item">
-                    <div class="news-date">2026 · 03 · 10</div>
-                    <h3>International Conference Participation</h3>
-                    <p>Our researchers participated in the 2026 International Computer Science Conference and delivered keynote presentations.</p>
-                    <a href="pages/news.html">Read More →</a>
-                </div>
-                <div class="text-center">
-                    <a href="pages/news.html" class="btn btn-secondary">View All News</a>
-                </div>
+        
+            <!-- News Item 1: IEEE GIIS 2026 -->
+            <div class="news-item">
+                <div class="news-date">2026 · 04 · 22</div>
+                <h3>IEEE GIIS 2026 Hosted by Fanlab in Nanjing</h3>
+                <p>Fanlab is proud to host the IEEE Global Information Infrastructure and Networking Symposium (GIIS) 2026, taking place in Nanjing from April 22 to April 24.</p>
+                <a href="https://2026.giis-conference.org/" target="_blank">Visit Website →</a>
             </div>
-        </section>
+        
+            <!-- News Item 2: ACM SIGOPS ChinaSys -->
+            <div class="news-item">
+                <div class="news-date">2026 · 05 · 30</div>
+                <h3>Call for Papers: The 30th ACM SIGOPS ChinaSys in Xi'an</h3>
+                <p>We warmly welcome submissions for the 30th ACM SIGOPS ChinaSys, which will be held in the historic city of Xi'an from May 30 to May 31, 2026.</p>
+                <a href="pages/news.html">Read More →</a>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="pages/news.html" class="btn btn-outline">View All News</a>
+        </div>
+    </section>
+
     </main>
 
     <!-- Footer -->
@@ -497,7 +551,7 @@
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>contact@fanlab.seu.edu.cn</p>
+                <p>xuchunxue@seu.edu.cn</p>
                 <p style="margin-top: 0.5rem;">Southeast University<br>Nanjing, China</p>
             </div>
         </div>

@@ -135,174 +135,112 @@
             padding: .3rem .8rem; border-radius: 20px;
         }
 
-        /* ── Director Card ── */
-        .director-card {
+        /* ── Teachers Grid (Compact) ── */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .teacher-card {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
             background: var(--white);
+            padding: 1.5rem;
             border-radius: var(--radius);
-            padding: 3rem 3.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .teacher-card:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-md);
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 0 3rem;
-            align-items: start;
-            position: relative;
-            overflow: hidden;
         }
-        .director-card::before {
-            content: '';
-            position: absolute; left: 0; top: 0; bottom: 0;
-            width: 5px;
-            background: linear-gradient(180deg, var(--accent), var(--gold));
-        }
-        .director-avatar-wrap {
-            width: 90px; height: 90px;
-            background: linear-gradient(135deg, var(--ink), #2c3e6d);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: var(--shadow-sm);
+        .teacher-avatar-link {
             flex-shrink: 0;
-        }
-        .director-info {}
-        .director-info h3 {
-            font-family: var(--font-serif);
-            font-size: 1.55rem; margin-bottom: .2rem;
-        }
-        .director-info .position {
-            color: var(--accent); font-weight: 600;
-            font-size: .85rem; letter-spacing: .06em;
-            text-transform: uppercase; margin-bottom: 1rem;
-        }
-        .director-info p { color: #444; font-size: .95rem; margin-bottom: .6rem; }
-        .director-email {
-            display: inline-flex; align-items: center; gap: .5rem;
-            margin-top: .6rem;
-            font-size: .85rem; color: var(--muted);
-        }
-        .director-email::before { content: '✉'; }
-
-        /* ── Team Grid ── */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .member-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 2rem 1.8rem 1.6rem;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            transition: transform .28s ease, box-shadow .28s ease;
-            display: flex; flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        .member-card::after {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--gold));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .3s ease;
-        }
-        .member-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-        .member-card:hover::after { transform: scaleX(1); }
-
-        .member-avatar {
-            width: 70px; height: 70px;
-            background: linear-gradient(135deg, #e8e4de, #d4cfc8);
+            display: block;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform .2s ease;
+            background: linear-gradient(135deg, #e8e4de, #d4cfc8);
         }
-        .member-card h3 {
+        .teacher-avatar-link:hover {
+            transform: scale(1.05);
+        }
+        .teacher-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .teacher-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .teacher-info h3 {
             font-family: var(--font-serif);
-            font-size: 1.1rem; margin-bottom: .2rem;
-        }
-        .member-card .position {
-            color: var(--accent); font-weight: 600;
-            font-size: .72rem; letter-spacing: .1em;
-            text-transform: uppercase; margin-bottom: .8rem;
-        }
-        .member-card .description {
-            font-size: .88rem; color: var(--muted);
-            flex: 1; margin-bottom: 1.4rem;
-            line-height: 1.55;
-        }
-
-        /* Card actions */
-        .card-actions {
-            display: flex; gap: .7rem; justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            display: inline-flex; align-items: center; gap: .4rem;
-            padding: .45rem 1.1rem;
-            border-radius: 6px;
-            font-size: .78rem; font-weight: 600;
-            letter-spacing: .04em;
-            text-decoration: none;
-            transition: all .2s ease;
-            font-family: var(--font-sans);
-        }
-        .btn-primary {
-            background: var(--ink);
-            color: var(--white);
-            border: 1.5px solid var(--ink);
-        }
-        .btn-primary:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-        .btn-outline {
-            background: transparent;
+            font-size: 1.15rem;
+            margin-bottom: 0.1rem;
             color: var(--ink);
-            border: 1.5px solid var(--border);
         }
-        .btn-outline:hover {
-            border-color: var(--ink);
-            background: var(--sand);
+        .teacher-info .title {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+        .teacher-info .research {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        .teacher-info .email {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color .2s;
+        }
+        .teacher-info .email::before {
+            content: '✉';
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        .teacher-info .email:hover {
+            color: var(--accent);
         }
 
-        /* ── PhD Section ── */
-        .phd-intro { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; }
-        .research-tags {
-            display: flex; flex-wrap: wrap; gap: .8rem;
+        /* ── Students List ── */
+        .students-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
         }
-        .tag {
-            display: inline-flex; align-items: center; gap: .5rem;
+        .student-name {
             background: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
             border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: .55rem 1.2rem;
-            font-size: .83rem;
+            font-size: 0.95rem;
             color: var(--ink);
             font-weight: 500;
-            transition: all .2s;
+            box-shadow: var(--shadow-sm);
+            transition: all .2s ease;
         }
-        .tag:hover {
+        .student-name:hover {
             background: var(--ink);
             color: var(--white);
             border-color: var(--ink);
+            transform: translateY(-2px);
         }
-
-        /* ── Visiting ── */
-        .visiting-box {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 3rem;
-            text-align: center;
-            border: 1px dashed var(--border);
-        }
-        .visiting-box p { color: var(--muted); font-size: .95rem; max-width: 560px; margin: 0 auto; }
-        .visiting-box a { color: var(--accent); font-weight: 600; text-decoration: none; }
-        .visiting-box a:hover { text-decoration: underline; }
-        .visiting-icon { font-size: 2.5rem; margin-bottom: 1rem; }
 
         /* ── Footer ── */
         .footer {
@@ -336,7 +274,7 @@
             .menu-toggle { display: block; }
             .nav-menu { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--ink); padding: 1rem 2rem; }
             .nav-menu.open { display: flex; }
-            .director-card { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem; }
+            .teacher-card { flex-direction: column; text-align: center; }
         }
 
         /* ── Animations ── */
@@ -345,11 +283,8 @@
             to   { opacity: 1; transform: translateY(0); }
         }
         .hero-content { animation: fadeUp .7s ease both; }
-        .director-card { animation: fadeUp .6s .1s ease both; }
-        .member-card:nth-child(1) { animation: fadeUp .5s .05s ease both; }
-        .member-card:nth-child(2) { animation: fadeUp .5s .12s ease both; }
-        .member-card:nth-child(3) { animation: fadeUp .5s .19s ease both; }
-        .member-card:nth-child(4) { animation: fadeUp .5s .26s ease both; }
+        .teacher-card { animation: fadeUp .6s .1s ease both; }
+        .student-name { animation: fadeUp .5s .1s ease both; }
     </style>
 </head>
 <body>
@@ -363,7 +298,6 @@
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="team.html" class="active">Team</a></li>
                 <li><a href="publications.html">Publications</a></li>
@@ -382,170 +316,95 @@
     </section>
 
     <main>
-        <!-- Director -->
+        <!-- Teachers -->
         <section class="team-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="label">Leadership</span>
-                    <h2>Laboratory Director</h2>
-                </div>
-                <div class="director-card">
-                    <div class="director-avatar-wrap">
-                        <img src="people/pic/richard.png" alt="Prof. Richard Li" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                    </div>
-                    <div class="director-info">
-                        <h3>Prof. Richard Li</h3>
-                        <p class="position">Director · Chief Professor</p>
-                        <p>Dr. Renwei (Richard) Li is a Chair Professor at Southeast University, China. From 2007 to 2024, he was Chief Scientist and SVP at Futurewei Technologies, following roles at Cisco and Ericsson. A prominent leader in the field, he chaired ITU-T FG Network 2030 and ETSI ISG NGP, and has led 30+ international conferences. He received the 2023 IEEE MMTC Outstanding Researcher Award, holds 65 US patents, and has published over 120 papers. His research currently focuses on 5G/6G, Industrial Networks, AI, and future network architectures.</p>
-                        <span class="director-email">richard.li@seu.edu.cn</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Senior Researchers -->
-        <section class="team-section alt">
             <div class="container">
                 <div class="section-header">
                     <span class="label">Faculty</span>
-                    <h2>Senior Researchers</h2>
+                    <h2>Teachers</h2>
                 </div>
-                <div class="team-grid">
-                    <div class="member-card">
-                        <div class="member-avatar">
-                            <img src="people/pic/han.jpg" alt="Prof. Han Lin" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                        </div>
-                        <h3>Prof. Han Lin</h3>
-                        <p class="position">Professor</p>
-                        <p class="description">Expert in next generation networks</p>
-                        <div class="card-actions">
-                            <a href="https://cs.seu.edu.cn/main.htm" class="btn btn-primary">Profile</a>
-                            <a href="mailto:zhangli@fanlab.edu" class="btn btn-outline">Contact</a>
-                        </div>
-                    </div>
-
-                    <div class="member-card">
-                        <!-- 将表情替换为 img 标签 -->
-                        <div class="member-avatar">
-                            <img src="people/pic/herb.png" alt="Prof. Dongbiao He" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                        </div>
-    
-                        <h3>Prof. Dongbiao He</h3>
-                        <p class="position">Associate Professor</p>
-                        <p class="description">Network for Everything</p>
-    
-                            <div class="card-actions">
-                            <a href="people/herb.html" class="btn btn-primary">Profile</a>
-                            <a href="mailto:hdb@seu.edu.cn" class="btn btn-outline">Contact</a>
-                            </div>
-                    </div>
-
-                    <div class="member-card">
-                        <div class="member-avatar">
-                            <img src="people/pic/biwei.jpg" alt="Prof. Biwei Li" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;"></div>
-                        <h3>Prof. Biwei Li</h3>
-                        <p class="position">Associate Professor </p>
-                        <p class="description">5G/6G Wireless Networks</p>
-                        <div class="card-actions">
-                            <a href="https://cs.seu.edu.cn/libiwei/main.htm" class="btn btn-primary">Profile</a>
-                            <a href="mailto:biwei.li@seu.edu.cn" class="btn btn-outline">Contact</a>
+                <div class="teachers-grid">
+                    <!-- Richard Li -->
+                    <div class="teacher-card">
+                        <a href="https://cs.seu.edu.cn/richardli/main.htm" class="teacher-avatar-link" title="View Profile">
+                            <img src="people/pic/richard.png" alt="Prof. Richard Li" class="teacher-avatar">
+                        </a>
+                        <div class="teacher-info">
+                            <h3>Prof. Richard Li</h3>
+                            <p class="title">Director · Chief Professor</p>
+                            <p class="research">5G/6G, Industrial Networks, AI, Future Network Architectures</p>
+                            <a href="mailto:richard.li@seu.edu.cn" class="email">richard.li@seu.edu.cn</a>
                         </div>
                     </div>
 
-                    <div class="member-card">
-                        <div class="member-avatar">
-                            <img src="people/pic/wan.png" alt="Prof. Ying Wan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                        </div>
-                        <h3>Prof. Ying Wan</h3>
-                        <p class="position">Associate Professor</p>
-                        <p class="description">AI networking and dataplane optimization</p>
-                        <div class="card-actions">
-                            <a href="https://wany16.github.io/" class="btn btn-primary">Profile</a>
-                            <a href="mailto:wy25@seu.edu.cn" class="btn btn-outline">Contact</a>
+                    <!-- Han Lin -->
+                    <div class="teacher-card">
+                        <a href="https://cs.seu.edu.cn/main.htm" class="teacher-avatar-link" title="View Profile">
+                            <img src="people/pic/han.jpg" alt="Prof. Han Lin" class="teacher-avatar">
+                        </a>
+                        <div class="teacher-info">
+                            <h3>Prof. Han Lin</h3>
+                            <p class="title">Professor</p>
+                            <p class="research">Next Generation Networks</p>
+                            <a href="mailto:zhangli@fanlab.edu" class="email">zhangli@fanlab.edu</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Postdocs -->
-        <section class="team-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="label">Postdoctoral</span>
-                    <h2>Postdoctoral Researchers</h2>
-                </div>
-                <div class="team-grid">
-                    <div class="member-card">
-                        <div class="member-avatar">👨‍🎓</div>
-                        <h3>Chen Xiao</h3>
-                        <p class="position">Postdoctoral Researcher</p>
-                        <p class="description">Blockchain technology research</p>
-                        <div class="card-actions">
-                            <a href="mailto:chenxiao@fanlab.edu" class="btn btn-outline">Contact</a>
+                    <!-- Dongbiao He -->
+                    <div class="teacher-card">
+                        <a href="people/herb.html" class="teacher-avatar-link" title="View Profile">
+                            <img src="people/pic/herb.png" alt="Prof. Dongbiao He" class="teacher-avatar">
+                        </a>
+                        <div class="teacher-info">
+                            <h3>Prof. Dongbiao He</h3>
+                            <p class="title">Associate Professor</p>
+                            <p class="research">Network and Distributed Systems</p>
+                            <a href="mailto:hdb@seu.edu.cn" class="email">hdb@seu.edu.cn</a>
                         </div>
                     </div>
-                    <div class="member-card">
-                        <div class="member-avatar">👨‍🎓</div>
-                        <h3>Yang Jun</h3>
-                        <p class="position">Postdoctoral Researcher</p>
-                        <p class="description">Internet of Things and edge computing</p>
-                        <div class="card-actions">
-                            <a href="mailto:yangjun@fanlab.edu" class="btn btn-outline">Contact</a>
+
+                    <!-- Biwei Li -->
+                    <div class="teacher-card">
+                        <a href="https://cs.seu.edu.cn/libiwei/main.htm" class="teacher-avatar-link" title="View Profile">
+                            <img src="people/pic/biwei.jpg" alt="Prof. Biwei Li" class="teacher-avatar">
+                        </a>
+                        <div class="teacher-info">
+                            <h3>Prof. Biwei Li</h3>
+                            <p class="title">Associate Professor</p>
+                            <p class="research">5G/6G Wireless Networks</p>
+                            <a href="mailto:biwei.li@seu.edu.cn" class="email">biwei.li@seu.edu.cn</a>
                         </div>
                     </div>
-                    <div class="member-card">
-                        <div class="member-avatar">👩‍🎓</div>
-                        <h3>Zhou Juan</h3>
-                        <p class="position">Postdoctoral Researcher</p>
-                        <p class="description">Natural language processing</p>
-                        <div class="card-actions">
-                            <a href="mailto:zhoujuan@fanlab.edu" class="btn btn-outline">Contact</a>
-                        </div>
-                    </div>
-                    <div class="member-card">
-                        <div class="member-avatar">👨‍🎓</div>
-                        <h3>Wu Jie</h3>
-                        <p class="position">Postdoctoral Researcher</p>
-                        <p class="description">Data mining and visualization</p>
-                        <div class="card-actions">
-                            <a href="mailto:wujie@fanlab.edu" class="btn btn-outline">Contact</a>
+
+                    <!-- Ying Wan -->
+                    <div class="teacher-card">
+                        <a href="https://wany16.github.io/" class="teacher-avatar-link" title="View Profile">
+                            <img src="people/pic/wan.png" alt="Prof. Ying Wan" class="teacher-avatar">
+                        </a>
+                        <div class="teacher-info">
+                            <h3>Prof. Ying Wan</h3>
+                            <p class="title">Associate Professor</p>
+                            <p class="research">AI Networking and Dataplane Optimization</p>
+                            <a href="mailto:wy25@seu.edu.cn" class="email">wy25@seu.edu.cn</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PhD -->
+        <!-- Students -->
         <section class="team-section alt">
             <div class="container">
                 <div class="section-header">
-                    <span class="label">Graduate</span>
-                    <h2>PhD Students</h2>
+                    <span class="label">Members</span>
+                    <h2>Students</h2>
                 </div>
-                <p class="phd-intro">Our laboratory has over 20 PhD candidates pursuing cutting-edge research across various domains.</p>
-                <div class="research-tags">
-                    <span class="tag">🔬 Computer Vision</span>
-                    <span class="tag">🧠 Neural Network Design</span>
-                    <span class="tag">💾 Big Data Processing</span>
-                    <span class="tag">🔐 Cybersecurity</span>
-                    <span class="tag">⚡ High-Performance Computing</span>
-                    <span class="tag">📱 Mobile Computing</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Visiting -->
-        <section class="team-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="label">Collaboration</span>
-                    <h2>Visiting Scholars</h2>
-                </div>
-                <div class="visiting-box">
-                    <div class="visiting-icon">🌍</div>
-                    <p>We regularly invite renowned experts and scholars from domestic and international institutions for academic exchange and collaborative research.</p>
-                    <p style="margin-top:1.2rem; font-style:italic; color:#999;">Interested in visiting our laboratory? <a href="contact.html">Get in touch →</a></p>
+                <div class="students-list">
+                    <span class="student-name">Xinze Li</span>
+                    <span class="student-name">Longhang Deng</span>
+                    <span class="student-name">Ziyao Xie</span>
+                    <span class="student-name">Ninxing Wang</span>
+                    <span class="student-name">Jiaming Chen</span>
                 </div>
             </div>
         </section>
@@ -586,4 +445,3 @@
     </script>
 </body>
 </html>
-
