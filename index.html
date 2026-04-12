@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ── Reset & Variables (From team.html) ── */
+        /* ── Reset & Variables ── */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -37,7 +37,7 @@
             line-height: 1.7;
         }
 
-        /* ── Navbar (Modified to match team style but keep index content) ── */
+        /* ── Navbar ── */
         .navbar {
             position: sticky;
             top: 0;
@@ -99,50 +99,6 @@
             cursor: pointer;
         }
 
-        /* ── Hero Section ── */
-        .hero {
-            background: var(--ink);
-            /* Reduced padding to make the hero section shorter */
-            padding: 70px 2rem 50px; 
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(192,57,43,.18) 0%, transparent 70%),
-                        radial-gradient(ellipse 50% 50% at 80% 30%, rgba(212,168,67,.12) 0%, transparent 70%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero-content h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: var(--white);
-            letter-spacing: -.01em;
-            margin-bottom: .6rem;
-        }
-        .hero-content p {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,.55);
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-        .hero-rule {
-            width: 50px;
-            height: 3px;
-            background: var(--gold);
-            margin: 1.2rem auto 0;
-            border-radius: 2px;
-        }
-
         /* ── Section wrapper ── */
         .section-wrap {
             padding: 80px 2rem;
@@ -187,31 +143,98 @@
             max-width: 900px;
         }
 
-        /* ── Lab Group Photo Section ── */
+        /* ── Lab Group Photo Carousel (NEW) ── */
         .lab-photo-section {
-            padding: 60px 2rem 20px; /* Less padding at bottom to flow into next section */
+            padding: 60px 2rem 20px; 
             background: var(--sand);
         }
-        .lab-photo-container {
+        .carousel-wrapper {
+            position: relative;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-md);
-            position: relative;
-            background: #d4cfc8; /* Fallback color */
+            background: #d4cfc8;
         }
-        .lab-photo-container img {
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            /* Hide scrollbar */
+            scrollbar-width: none; 
+        }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-slide {
+            flex: 0 0 100%; /* Each image takes full width */
+            scroll-snap-align: start;
+            position: relative;
+        }
+        .carousel-slide img {
             width: 100%;
             height: auto;
             max-height: 550px;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
         }
-        .lab-photo-container:hover img {
-            transform: scale(1.02);
+        /* Carousel Navigation Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 26, 46, 0.5);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: background 0.3s, opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Hidden by default, shown on hover */
+        }
+        .carousel-wrapper:hover .carousel-btn {
+            opacity: 1;
+        }
+        .carousel-btn:hover {
+            background: var(--accent);
+        }
+        .carousel-btn.prev {
+            left: 15px;
+        }
+        .carousel-btn.next {
+            right: 15px;
+        }
+        /* Carousel Indicators (Dots) */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .indicator.active {
+            background: var(--white);
+            transform: scale(1.2);
         }
 
-        /* ── Research Cards (Updated for Images) ── */
+        /* ── Research Cards ── */
         .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -386,8 +409,10 @@
             .nav-menu.open {
                 display: flex;
             }
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .carousel-btn {
+                opacity: 1; /* Always show buttons on mobile */
+                width: 36px;
+                height: 36px;
             }
         }
     </style>
@@ -412,19 +437,29 @@
         </div>
     </nav>
 
-
     <main>
-        <!-- Lab Group Photo Section -->
+        <!-- Lab Group Photo Section (Now a Carousel) -->
         <section class="lab-photo-section">
             <div class="container">
-                <div class="lab-photo-container">
-                    <!-- 替换此处的 src 为您真实的合影图片路径 -->
-                    <img src="image/research/heying.jpg" alt="FanLab Research Team Group Photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Q0Y2ZjOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZhNmE3YSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R3JvdXAgUGhvdG8gUGxhY2Vob2xkZXI8L3RleHQ+PC9zdmc+'">
+                <div class="carousel-wrapper">
+                    <!-- Left/Right Buttons -->
+                    <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+                    <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+                    
+                    <!-- Image Track -->
+                    <div class="carousel-track" id="photoTrack">
+                        <!-- Images will be injected here by JavaScript -->
+                    </div>
+
+                    <!-- Dots Indicator -->
+                    <div class="carousel-indicators" id="indicators">
+                        <!-- Dots will be injected here by JavaScript -->
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Research Areas (Updated) -->
+        <!-- Research Areas -->
         <section class="section-wrap" style="background: var(--white);">
             <div class="container">
                 <div class="section-header">
@@ -432,13 +467,12 @@
                     <h2>Research Fields and Directions</h2>
                 </div>
                 
-                <!-- Added Description Paragraph -->
                 <p class="section-description">
                     Our research encompasses a wide range of advanced network technologies. We primarily focus on four key areas: <b>（1）User Equipment and Field Devices</b>, <b>（2）Ubiquitous Access Networks</b>, <b>（3）Backbone and Transport Networks</b>, and <b>（4）Digital Brain and Intelligence</b>, but not limited to.
                 </p>
 
                 <div class="research-grid">
-                    <!-- Card 1: User Equipment and Field Device -->
+                    <!-- Cards omitted for brevity in explanation, kept intact in code -->
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80" alt="User Equipment and Field Device" class="card-img">
                         <div class="card-content">
@@ -446,7 +480,6 @@
                             <p>Developing advanced smart devices, IoT sensors, and field equipment for efficient data collection and edge processing.</p>
                         </div>
                     </div>  
-                    <!-- Card 2: Ubiquitous Access Networks -->
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80" alt="Ubiquitous Access Networks" class="card-img">
                         <div class="card-content">
@@ -454,7 +487,6 @@
                             <p>Ensuring seamless, anywhere-anytime connectivity through integrated wireless, cellular, and broadband access technologies.</p>
                         </div>
                     </div>
-                    <!-- Card 3: Backbone and Transport Networks -->
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Backbone and Transport Networks" class="card-img">
                         <div class="card-content">
@@ -462,7 +494,6 @@
                             <p>Building high-capacity, ultra-reliable core network infrastructures and optical transport systems for massive data transmission.</p>
                         </div>
                     </div>
-                    <!-- Card 4: Digital Brain and Intelligence -->
                     <div class="card">
                         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="Digital Brain and Intelligence" class="card-img">
                         <div class="card-content">
@@ -472,13 +503,11 @@
                     </div>
                 </div>
                 
-                <!-- View More Research Button -->
                 <div class="text-center">
                     <a href="pages/research.html" class="btn btn-outline">View More Research</a>
                 </div>
             </div>
         </section>
-
 
         <!-- Latest News -->
         <section class="section-wrap">
@@ -488,7 +517,6 @@
                 <h2>Latest News</h2>
                 </div>
         
-            <!-- News Item 1: IEEE GIIS 2026 -->
             <div class="news-item">
                 <div class="news-date">2026 · 04 · 22</div>
                 <h3>IEEE GIIS 2026 Hosted by FanLab in Nanjing</h3>
@@ -496,7 +524,6 @@
                 <a href="https://2026.giis-conference.org/" target="_blank">Visit Website →</a>
             </div>
         
-            <!-- News Item 2: ACM SIGOPS ChinaSys -->
             <div class="news-item">
                 <div class="news-date">2026 · 05 · 30</div>
                 <h3>Call for Papers: The 30th ACM SIGOPS ChinaSys in Xi'an</h3>
@@ -543,6 +570,89 @@
         // Mobile menu toggle
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('navMenu').classList.toggle('open');
+        });
+
+        // ==========================================
+        // Carousel Logic (Simulating Directory Read)
+        // ==========================================
+        
+        // 1. Configure your image paths here. 
+        // Just add new image paths to this array, and the carousel will automatically update!
+        const imageDirectory = [
+            "image/research/heying.jpg",
+            "image/photo/srv61.jpg", // Example Image 2
+            "image/photo/srv62.jpg",
+            "image/photo/srv63.jpg" // Example Image 3
+        ];
+
+        const track = document.getElementById('photoTrack');
+        const indicatorsContainer = document.getElementById('indicators');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // 2. Generate HTML for images and dots
+        imageDirectory.forEach((src, index) => {
+            // Create Slide
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `FanLab Photo ${index + 1}`;
+            // Fallback SVG if image fails to load
+            img.onerror = function() {
+                this.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Q0Y2ZjOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZhNmE3YSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW1hZ2UgTm90IEZvdW5kPC90ZXh0Pjwvc3ZnPg==';
+            };
+            slide.appendChild(img);
+            track.appendChild(slide);
+
+            // Create Dot
+            const dot = document.createElement('div');
+            dot.className = `indicator ${index === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => scrollToSlide(index));
+            indicatorsContainer.appendChild(dot);
+        });
+
+        // 3. Scroll Logic
+        let currentIndex = 0;
+        const totalSlides = imageDirectory.length;
+
+        function updateIndicators(index) {
+            document.querySelectorAll('.indicator').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        function scrollToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            currentIndex = index;
+            const slideWidth = track.clientWidth;
+            track.scrollTo({
+                left: slideWidth * currentIndex,
+                behavior: 'smooth'
+            });
+            updateIndicators(currentIndex);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) scrollToSlide(currentIndex - 1);
+            else scrollToSlide(totalSlides - 1); // Loop back to end
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalSlides - 1) scrollToSlide(currentIndex + 1);
+            else scrollToSlide(0); // Loop back to start
+        });
+
+        // Update active dot when user swipes/scrolls manually
+        track.addEventListener('scroll', () => {
+            const scrollPosition = track.scrollLeft;
+            const slideWidth = track.clientWidth;
+            const newIndex = Math.round(scrollPosition / slideWidth);
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateIndicators(currentIndex);
+            }
         });
     </script>
 
