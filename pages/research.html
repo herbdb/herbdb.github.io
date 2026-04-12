@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Our Research Projects at Fanlab">
-    <title>Research - Fanlab</title>
+    <meta name="description" content="Our Research at FanLab">
+    <title>Research - FanLab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/unified.css">
@@ -75,7 +75,7 @@
         /* ── Hero ── */
         .hero {
             background: var(--ink);
-            padding: 110px 2rem 80px;
+            padding: 70px 2rem 50px; /* Reduced padding to match index */
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -88,18 +88,6 @@
                 radial-gradient(ellipse 50% 50% at 80% 30%, rgba(212,168,67,.12) 0%, transparent 70%);
         }
         .hero-content { position: relative; z-index: 1; }
-        .hero-content h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            color: var(--white);
-            letter-spacing: -.01em;
-            margin-bottom: .6rem;
-        }
-        .hero-content p {
-            font-size: 1.1rem; color: rgba(255,255,255,.55);
-            letter-spacing: .1em; text-transform: uppercase;
-            font-weight: 300;
-        }
         .hero-rule {
             width: 50px; height: 3px;
             background: var(--gold);
@@ -167,7 +155,7 @@
             color: var(--muted);
             line-height: 1.5;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -265,8 +253,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h1>Fanlab</h1>
-                <p class="tagline">Innovation · Research · Engineering</p>
+                <h1>FanLab</h1>
+                <p class="tagline">Future Advanced Network Lab</p>
             </div>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
@@ -279,14 +267,6 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Research Projects</h1>
-            <p>Innovative research initiatives we are currently pursuing</p>
-            <div class="hero-rule"></div>
-        </div>
-    </section>
 
     <!-- Main Content -->
     <main>
@@ -295,14 +275,83 @@
                 <h2 class="section-title">Current Directions</h2>
                 
                 <div class="project-grid">
-                    <!-- Project 1 -->
+                    <!-- Project 1: 6G Intelligent Wireless Communication -->
                     <article class="project-card">
                         <div class="project-content">
-                            <h3>Agentic Network</h3>
-                            <p>Exploring autonomous, AI-driven network agents for self-optimizing, self-healing, and highly adaptive next-generation network architectures.</p>
+                            <h3>6G Intelligent Wireless Communication Networks</h3>
+                            <p>Focusing on Integrated Sensing and Communication (ISAC), wireless resource allocation, system performance optimization, and high-precision wireless positioning.</p>
                         </div>
                         <div class="project-image">
-                            <!-- Generated Abstract SVG for Agentic Network -->
+                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="110" height="90" fill="#1a1a2e"/>
+                                <polygon points="55,15 75,28 75,52 55,65 35,52 35,28" fill="none" stroke="#c0392b" stroke-width="2"/>
+                                <polygon points="55,25 65,33 65,47 55,55 45,47 45,33" fill="#d4a843" opacity="0.8"/>
+                                <path d="M55 65 L55 80 M35 52 L20 60 M75 52 L90 60 M35 28 L20 20 M75 28 L90 20 M55 15 L55 5" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: URLLC for UAV and IIoT -->
+                    <article class="project-card">
+                        <div class="project-content">
+                            <h3>URLLC for UAV and Industrial IoT</h3>
+                            <p>Developing Ultra-Reliable and Low-Latency Communications (URLLC) tailored for unmanned aerial vehicles (UAVs) and the Industrial Internet of Things (IIoT).</p>
+                        </div>
+                        <div class="project-image">
+                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="110" height="90" fill="#1a1a2e"/>
+                                <path d="M40 60 L40 30 L55 20 L70 30 L70 60 Z" fill="none" stroke="#d4a843" stroke-width="2"/>
+                                <rect x="45" y="45" width="20" height="15" fill="#c0392b"/>
+                                <circle cx="55" cy="35" r="4" fill="#ffffff" opacity="0.8"/>
+                                <path d="M20 70 L90 70" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+                                <circle cx="30" cy="70" r="3" fill="#d4a843"/>
+                                <circle cx="55" cy="70" r="3" fill="#d4a843"/>
+                                <circle cx="80" cy="70" r="3" fill="#d4a843"/>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Wi-Fi Protocols and Multi-AP Coordination -->
+                    <article class="project-card">
+                        <div class="project-content">
+                            <h3>Wi-Fi Protocols & Multi-AP Coordination</h3>
+                            <p>Researching advanced Wi-Fi protocols and multi-access point coordination mechanisms to achieve seamless, high-throughput, and interference-free local connectivity.</p>
+                        </div>
+                        <div class="project-image">
+                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="110" height="90" fill="#1a1a2e"/>
+                                <circle cx="55" cy="45" r="25" fill="none" stroke="#c0392b" stroke-width="2"/>
+                                <ellipse cx="55" cy="45" rx="10" ry="25" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.8"/>
+                                <path d="M30 45 L80 45" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                                <path d="M40 25 L70 65 M40 65 L70 25" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
+                                <circle cx="55" cy="45" r="3" fill="#ffffff"/>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: AI Infrastructure -->
+                    <article class="project-card">
+                        <div class="project-content">
+                            <h3>AI Infrastructure Architecture & Protocols</h3>
+                            <p>Designing robust architecture and protocols for AI infrastructure, including advanced load balancing, congestion control, and adaptive routing mechanisms.</p>
+                        </div>
+                        <div class="project-image">
+                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="110" height="90" fill="#1a1a2e"/>
+                                <rect x="35" y="25" width="40" height="40" rx="4" fill="none" stroke="#d4a843" stroke-width="2"/>
+                                <rect x="43" y="33" width="24" height="24" rx="2" fill="#c0392b"/>
+                                <path d="M35 35h-10M35 45h-10M35 55h-10M75 35h10M75 45h10M75 55h10M45 25v-10M55 25v-10M65 25v-10M45 65v10M55 65v10M65 65v10" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+                            </svg>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: Programmable Data Planes -->
+                    <article class="project-card">
+                        <div class="project-content">
+                            <h3>Programmable Data Planes in SDN & DCN</h3>
+                            <p>Exploring programmable data planes, in-network computation, and in-band telemetry within Software-Defined Networking (SDN) and Data Center Networks (DCN).</p>
+                        </div>
+                        <div class="project-image">
                             <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="110" height="90" fill="#1a1a2e"/>
                                 <circle cx="55" cy="45" r="12" fill="#c0392b"/>
@@ -317,70 +366,14 @@
                             </svg>
                         </div>
                     </article>
-
-                    <!-- Project 2 -->
+                    
+                    <!-- Project 6: Satellite Network (Kept to maintain grid balance) -->
                     <article class="project-card">
                         <div class="project-content">
-                            <h3>Intelligent Computing Network</h3>
-                            <p>Integrating advanced computing power with network infrastructure to support distributed AI, large-scale model training, and ubiquitous intelligence.</p>
+                            <h3>Satellite & Space-Air-Ground Networks</h3>
+                            <p>Designing low-earth orbit (LEO) satellite constellations and space-air-ground integrated networks to achieve seamless global coverage and connectivity.</p>
                         </div>
                         <div class="project-image">
-                            <!-- Generated Abstract SVG for Intelligent Computing -->
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <rect x="35" y="25" width="40" height="40" rx="4" fill="none" stroke="#d4a843" stroke-width="2"/>
-                                <rect x="43" y="33" width="24" height="24" rx="2" fill="#c0392b"/>
-                                <path d="M35 35h-10M35 45h-10M35 55h-10M75 35h10M75 45h10M75 55h10M45 25v-10M55 25v-10M65 25v-10M45 65v10M55 65v10M65 65v10" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                            </svg>
-                        </div>
-                    </article>
-
-                    <!-- Project 3 -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Industrial Network</h3>
-                            <p>Developing deterministic, ultra-reliable, and low-latency communication networks tailored for smart manufacturing and industrial automation.</p>
-                        </div>
-                        <div class="project-image">
-                            <!-- Generated Abstract SVG for Industrial Network -->
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <path d="M40 60 L40 30 L55 20 L70 30 L70 60 Z" fill="none" stroke="#d4a843" stroke-width="2"/>
-                                <rect x="45" y="45" width="20" height="15" fill="#c0392b"/>
-                                <circle cx="55" cy="35" r="4" fill="#ffffff" opacity="0.8"/>
-                                <path d="M20 70 L90 70" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
-                                <circle cx="30" cy="70" r="3" fill="#d4a843"/>
-                                <circle cx="55" cy="70" r="3" fill="#d4a843"/>
-                                <circle cx="80" cy="70" r="3" fill="#d4a843"/>
-                            </svg>
-                        </div>
-                    </article>
-
-                    <!-- Project 4 -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>6G Network</h3>
-                            <p>Researching next-generation wireless technologies, including terahertz communication, massive MIMO, and native AI integration for 6G.</p>
-                        </div>
-                        <div class="project-image">
-                            <!-- Generated Abstract SVG for 6G Network -->
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <polygon points="55,15 75,28 75,52 55,65 35,52 35,28" fill="none" stroke="#c0392b" stroke-width="2"/>
-                                <polygon points="55,25 65,33 65,47 55,55 45,47 45,33" fill="#d4a843" opacity="0.8"/>
-                                <path d="M55 65 L55 80 M35 52 L20 60 M75 52 L90 60 M35 28 L20 20 M75 28 L90 20 M55 15 L55 5" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
-                            </svg>
-                        </div>
-                    </article>
-
-                    <!-- Project 5 -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Satellite Network</h3>
-                            <p>Designing low-earth orbit (LEO) satellite constellations and space-air-ground integrated networks to achieve seamless global coverage.</p>
-                        </div>
-                        <div class="project-image">
-                            <!-- Generated Abstract SVG for Satellite Network -->
                             <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="110" height="90" fill="#1a1a2e"/>
                                 <path d="M-10 90 Q 55 40 120 90" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3" stroke-dasharray="4 4"/>
@@ -391,52 +384,10 @@
                             </svg>
                         </div>
                     </article>
-
-                    <!-- Project 6 -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Next Generation Internet</h3>
-                            <p>Innovating core internet protocols, routing architectures, and semantic networking mechanisms to build a more secure and efficient future web.</p>
-                        </div>
-                        <div class="project-image">
-                            <!-- Generated Abstract SVG for Next Generation Internet -->
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <circle cx="55" cy="45" r="25" fill="none" stroke="#c0392b" stroke-width="2"/>
-                                <ellipse cx="55" cy="45" rx="10" ry="25" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.8"/>
-                                <path d="M30 45 L80 45" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                                <path d="M40 25 L70 65 M40 65 L70 25" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
-                                <circle cx="55" cy="45" r="3" fill="#ffffff"/>
-                            </svg>
-                        </div>
-                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="research-focus">
-            <div class="container">
-                <h2 class="section-title">Research Focus</h2>
-                <div class="focus-grid">
-                    <div class="focus-card">
-                        <h3>Cutting-Edge</h3>
-                        <p>Following international academic frontiers and pursuing research with significant innovation value.</p>
-                    </div>
-                    <div class="focus-card">
-                        <h3>Practical Impact</h3>
-                        <p>Emphasizing the practical application value of research results and promoting industry-academia collaboration.</p>
-                    </div>
-                    <div class="focus-card">
-                        <h3>Interdisciplinary</h3>
-                        <p>Encouraging cross-disciplinary collaboration and integrating knowledge from multiple fields.</p>
-                    </div>
-                    <div class="focus-card">
-                        <h3>Talent Development</h3>
-                        <p>Cultivating high-quality researchers and academic successors through research practice.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
@@ -445,7 +396,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>About Us</h4>
-                    <p>An academic research laboratory dedicated to advanced network research and technological innovation at Southeast University.</p>
+                    <p>An academic research laboratory dedicated to advanced network research and technological Future Advanced Network Lab at Southeast University.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -464,7 +415,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 <span style="color: var(--gold);">Fanlab</span>, Southeast University. All rights reserved.</p>
+                <p>&copy; 2026 <span style="color: var(--gold);">FanLab</span>, Southeast University. All rights reserved.</p>
             </div>
         </div>
     </footer>

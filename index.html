@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fanlab - Future Advanced Network Lab at Southeast University">
-    <title>Fanlab - Future Advanced Network Lab</title>
+    <meta name="description" content="FanLab - Future Advanced Network Lab at Southeast University">
+    <title>FanLab - Future Advanced Network Lab</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -155,7 +155,7 @@
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
         }
         .section-header h2 {
             font-family: var(--font-serif);
@@ -178,6 +178,13 @@
             background: rgba(192,57,43,.08);
             padding: .3rem .8rem;
             border-radius: 20px;
+        }
+        .section-description {
+            margin-bottom: 3rem;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 900px;
         }
 
         /* ── Lab Group Photo Section ── */
@@ -202,26 +209,6 @@
         }
         .lab-photo-container:hover img {
             transform: scale(1.02);
-        }
-        .lab-photo-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(26,26,46,0.9) 0%, transparent 100%);
-            padding: 4rem 2rem 1.5rem;
-            color: var(--white);
-            pointer-events: none;
-        }
-        .lab-photo-caption h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            margin-bottom: 0.2rem;
-            letter-spacing: 0.02em;
-        }
-        .lab-photo-caption p {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.8);
         }
 
         /* ── Research Cards (Updated for Images) ── */
@@ -402,9 +389,6 @@
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            .lab-photo-caption {
-                padding: 2rem 1.5rem 1rem;
-            }
         }
     </style>
 </head>
@@ -414,8 +398,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h1>Fanlab</h1>
-                <p class="tagline">Innovation · Research · Engineering</p>
+                <h1>FanLab</h1>
+                <p class="tagline">Future Advanced Network Lab</p>
             </div>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <ul class="nav-menu" id="navMenu">
@@ -428,14 +412,6 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>The Home of Next Generation Advanced Networks Research since 2026</h1>
-            <p>Leading research in advanced network technologies at Southeast University</p>
-            <div class="hero-rule"></div>
-        </div>
-    </section>
 
     <main>
         <!-- Lab Group Photo Section -->
@@ -443,11 +419,7 @@
             <div class="container">
                 <div class="lab-photo-container">
                     <!-- 替换此处的 src 为您真实的合影图片路径 -->
-                    <img src="image/research/heying.jpg" alt="Fanlab Research Team Group Photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Q0Y2ZjOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZhNmE3YSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R3JvdXAgUGhvdG8gUGxhY2Vob2xkZXI8L3RleHQ+PC9zdmc+'">
-                    <div class="lab-photo-caption">
-                        <h3>Fanlab Research Team</h3>
-                        <p>Southeast University, Nanjing</p>
-                    </div>
+                    <img src="image/research/heying.jpg" alt="FanLab Research Team Group Photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2Q0Y2ZjOCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzZhNmE3YSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R3JvdXAgUGhvdG8gUGxhY2Vob2xkZXI8L3RleHQ+PC9zdmc+'">
                 </div>
             </div>
         </section>
@@ -457,8 +429,14 @@
             <div class="container">
                 <div class="section-header">
                     <span class="label">Explore</span>
-                    <h2>Research Directions</h2>
+                    <h2>Research Fields and Directions</h2>
                 </div>
+                
+                <!-- Added Description Paragraph -->
+                <p class="section-description">
+                    Our research encompasses a wide range of advanced network technologies. We primarily focus on four key areas: <b>（1）User Equipment and Field Devices</b>, <b>（2）Ubiquitous Access Networks</b>, <b>（3）Backbone and Transport Networks</b>, and <b>（4）Digital Brain and Intelligence</b>, but not limited to.
+                </p>
+
                 <div class="research-grid">
                     <!-- Card 1: User Equipment and Field Device -->
                     <div class="card">
@@ -513,8 +491,8 @@
             <!-- News Item 1: IEEE GIIS 2026 -->
             <div class="news-item">
                 <div class="news-date">2026 · 04 · 22</div>
-                <h3>IEEE GIIS 2026 Hosted by Fanlab in Nanjing</h3>
-                <p>Fanlab is proud to host the IEEE Global Information Infrastructure and Networking Symposium (GIIS) 2026, taking place in Nanjing from April 22 to April 24.</p>
+                <h3>IEEE GIIS 2026 Hosted by FanLab in Nanjing</h3>
+                <p>FanLab is proud to host the IEEE Global Information Infrastructure and Networking Symposium (GIIS) 2026, taking place in Nanjing from April 22 to April 24.</p>
                 <a href="https://2026.giis-conference.org/" target="_blank">Visit Website →</a>
             </div>
         
@@ -539,7 +517,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>About Us</h4>
-                <p>An academic research laboratory dedicated to advanced network research and technological innovation at Southeast University.</p>
+                <p>An academic research laboratory dedicated to advanced network research and technological Future Advanced Network Lab at Southeast University.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -557,7 +535,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 <span style="color: var(--gold);">Fanlab</span>, Southeast University. All rights reserved.</p>
+            <p>&copy; 2026 <span style="color: var(--gold);">FanLab</span>, Southeast University. All rights reserved.</p>
         </div>
     </footer>
 
