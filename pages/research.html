@@ -135,278 +135,111 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ── Common Tags ── */
-        .research-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .rtag {
-            font-size: 0.8rem;
-            background: var(--sand);
-            border: 1px solid #e5e5e5;
-            padding: 4px 12px;
-            border-radius: 16px;
-            color: var(--muted);
-            display: inline-block;
-            line-height: 1.4;
-            transition: all 0.2s;
-        }
-        .rtag:hover {
-            background: var(--white);
-            border-color: var(--theme-purple);
-            color: var(--theme-purple);
-        }
-
-        /* ── Compact Tree View ── */
-        .tree-wrapper {
-            position: relative;
-            padding: 60px 0 20px; 
-        }
-
-        .tree-axis {
-            position: absolute;
-            left: 50%;
-            top: 38px; /* Starts just below the pill */
-            bottom: 0;
-            width: 1px;
-            background-color: var(--border);
-            transform: translateX(-50%);
-        }
-
-        .tree-top-icon {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            transform: translateX(-50%);
-            background: var(--white);
-            border: 2px solid var(--theme-purple);
-            border-radius: 20px; /* Pill shape */
-            padding: 6px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--theme-purple);
-            font-size: 0.95rem;
-            font-weight: bold;
-            font-family: var(--font-serif);
-            z-index: 2;
-            white-space: nowrap;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .tree-node {
-            position: relative;
-            width: 50%;
-            padding-bottom: 20px;
-        }
-
-        .tree-node.left { left: 0; padding-right: 40px; }
-        .tree-node.right { left: 50%; padding-left: 40px; }
-
-        /* Safe Staggering - Adjusted for tighter layout */
-        @media (min-width: 769px) {
-            .tree-node.node-2 { margin-top: -120px; } /* Pull AI Networks up */
-            .tree-node.node-3 { margin-top: -280px; } /* Pull Network Theory way up to tuck under node 1 */
-        }
-
-        .tree-node::after {
-            content: '';
-            position: absolute;
-            top: 18px;
-            width: 9px;
-            height: 9px;
-            background-color: var(--theme-purple);
-            border-radius: 50%;
-            z-index: 2;
-        }
-        .tree-node.left::after { right: -4.5px; }
-        .tree-node.right::after { left: -4.5px; }
-
-        .node-header {
-            position: relative;
-            padding-bottom: 8px;
-            margin-bottom: 16px;
-        }
-        
-        .node-header h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            color: var(--theme-purple);
-            font-weight: 600;
-        }
-
-        .tree-node.left .node-header { text-align: right; }
-        .tree-node.right .node-header { text-align: left; }
-
-        .node-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            height: 1px;
-            background-color: var(--theme-purple);
-            opacity: 0.4;
-        }
-        .tree-node.left .node-header::after { right: -40px; left: 0; }
-        .tree-node.right .node-header::after { left: -40px; right: 0; }
-
-        .node-body {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .tree-node.left .node-body { align-items: flex-end; }
-        .tree-node.right .node-body { align-items: flex-start; }
-
-        .sub-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px 20px;
-            width: 100%;
-            max-width: 480px;
-            box-shadow: var(--shadow-sm);
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-            text-align: left;
-        }
-
-        .sub-card:hover {
-            border-color: var(--theme-purple);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .sub-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .sub-card-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            background: var(--theme-light);
-            color: var(--theme-purple);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .sub-card-icon svg { width: 18px; height: 18px; }
-
-        .sub-card h4 {
-            font-size: 1.05rem;
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        /* ── Beautified Category View ── */
+        /* ── Category View (Line Art, Right Icon) ── */
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             padding-top: 20px;
         }
 
-        .cat-card {
+        .cat-small-card {
             background: var(--white);
             border-radius: var(--radius);
             border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .cat-card-header {
             padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 16px;
-            border-bottom: 1px solid var(--border);
         }
 
-        .cat-card:nth-child(1) .cat-card-header {
-            background: linear-gradient(to right, #fff5f5, #ffffff);
-            border-left: 4px solid var(--accent);
-        }
-        .cat-card:nth-child(1) .cat-icon { color: var(--accent); background: #fde8e8; }
-
-        .cat-card:nth-child(2) .cat-card-header {
-            background: linear-gradient(to right, #fffbf0, #ffffff);
-            border-left: 4px solid var(--gold);
-        }
-        .cat-card:nth-child(2) .cat-icon { color: #b8860b; background: #fef5d9; }
-
-        .cat-card:nth-child(3) .cat-card-header {
-            background: linear-gradient(to right, #faf5ff, #ffffff);
-            border-left: 4px solid var(--theme-purple);
-        }
-        .cat-card:nth-child(3) .cat-icon { color: var(--theme-purple); background: #f3e8ff; }
-
-        .cat-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+        .cat-small-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--theme-purple);
         }
 
-        .cat-icon svg { width: 22px; height: 22px; }
+        .card-text-content {
+            flex: 1;
+        }
 
-        .cat-card-header h3 {
+        .card-text-content h4 {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 1.05rem;
             color: var(--ink);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-text-content p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
             margin: 0;
         }
 
-        .cat-card-body {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            flex: 1;
-            background: var(--sand);
-        }
-
-        .cat-section h4 {
-            font-size: 0.95rem;
-            color: var(--ink);
-            margin-bottom: 12px;
+        .card-icon-right {
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .cat-section h4::before {
-            content: '';
-            display: block;
-            width: 6px;
-            height: 6px;
+            justify-content: center;
+            background: var(--theme-light);
             border-radius: 50%;
+            color: var(--theme-purple);
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
-        .cat-card:nth-child(1) .cat-section h4::before { background: var(--accent); }
-        .cat-card:nth-child(2) .cat-section h4::before { background: var(--gold); }
-        .cat-card:nth-child(3) .cat-section h4::before { background: var(--theme-purple); }
+        .cat-small-card:hover .card-icon-right {
+            background: var(--theme-purple);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .card-icon-right svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+
+        /* ── Compact Tree View (Hidden by default) ── */
+        .tree-wrapper { position: relative; padding: 60px 0 20px; }
+        .tree-axis { position: absolute; left: 50%; top: 38px; bottom: 0; width: 1px; background-color: var(--border); transform: translateX(-50%); }
+        .tree-top-icon { position: absolute; left: 50%; top: 0; transform: translateX(-50%); background: var(--white); border: 2px solid var(--theme-purple); border-radius: 20px; padding: 6px 24px; display: flex; align-items: center; justify-content: center; color: var(--theme-purple); font-size: 0.95rem; font-weight: bold; font-family: var(--font-serif); z-index: 2; white-space: nowrap; box-shadow: var(--shadow-sm); }
+        .tree-node { position: relative; width: 50%; padding-bottom: 20px; }
+        .tree-node.left { left: 0; padding-right: 40px; }
+        .tree-node.right { left: 50%; padding-left: 40px; }
+        @media (min-width: 769px) { .tree-node.node-2 { margin-top: -120px; } .tree-node.node-3 { margin-top: -280px; } }
+        .tree-node::after { content: ''; position: absolute; top: 18px; width: 9px; height: 9px; background-color: var(--theme-purple); border-radius: 50%; z-index: 2; }
+        .tree-node.left::after { right: -4.5px; }
+        .tree-node.right::after { left: -4.5px; }
+        .node-header { position: relative; padding-bottom: 8px; margin-bottom: 16px; }
+        .node-header h3 { font-family: var(--font-serif); font-size: 1.4rem; color: var(--theme-purple); font-weight: 600; }
+        .tree-node.left .node-header { text-align: right; }
+        .tree-node.right .node-header { text-align: left; }
+        .node-header::after { content: ''; position: absolute; bottom: 0; height: 1px; background-color: var(--theme-purple); opacity: 0.4; }
+        .tree-node.left .node-header::after { right: -40px; left: 0; }
+        .tree-node.right .node-header::after { left: -40px; right: 0; }
+        .node-body { display: flex; flex-direction: column; gap: 12px; }
+        .tree-node.left .node-body { align-items: flex-end; }
+        .tree-node.right .node-body { align-items: flex-start; }
+        .sub-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; width: 100%; max-width: 480px; box-shadow: var(--shadow-sm); transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; text-align: left; }
+        .sub-card:hover { border-color: var(--theme-purple); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .sub-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .sub-card-icon { width: 32px; height: 32px; border-radius: 6px; background: var(--theme-light); color: var(--theme-purple); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .sub-card-icon svg { width: 18px; height: 18px; }
+        .sub-card h4 { font-size: 1.05rem; color: var(--ink); font-weight: 600; }
 
         /* ── Responsive ── */
+        @media (max-width: 992px) {
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
+            .category-grid { grid-template-columns: 1fr; }
             .tree-axis { left: 16px; top: 40px; }
             .tree-top-icon { left: 16px; top: 0; padding: 6px 16px; font-size: 0.85rem; }
             .tree-node { width: 100%; padding-left: 40px !important; padding-right: 0 !important; left: 0 !important; margin-top: 0 !important; margin-bottom: 30px; }
@@ -442,18 +275,205 @@
         
         <!-- Tabs -->
         <div class="tabs-container">
-            <button class="tab-btn active" onclick="switchTab('tree-view', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
-                Tree
-            </button>
-            <button class="tab-btn" onclick="switchTab('category-view', this)">
+            <button class="tab-btn active" onclick="switchTab('category-view', this)">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                 Category
             </button>
+            <button class="tab-btn" onclick="switchTab('tree-view', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+                Tree
+            </button>
         </div>
 
-        <!-- View 1: Compact Tree View -->
-        <div id="tree-view" class="view-section active">
+        <!-- View 1: Category View (Default) -->
+        <div id="category-view" class="view-section active">
+            <div class="category-grid">
+                
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Next-Generation QoS</h4>
+                        <p>Advanced quality of service mechanisms tailored for future deterministic and high-demand networks.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Lossless Communication and Network</h4>
+                        <p>Eliminating packet loss to accelerate distributed computing, cloud services, and intensive workloads.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="12" r="3"/><path d="M8 12h8"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Performance-Guaranteed Networks</h4>
+                        <p>Providing strict mathematical bounds on latency, jitter, and throughput for critical applications.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Next-Generation Routing and Forwarding</h4>
+                        <p>Advanced, programmable data planes designed for highly efficient and dynamic traffic delivery.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 12h6l3-3 3 3h6m-9-3v12"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Qualitative Communications</h4>
+                        <p>Shifting from traditional bit-level transmission to value-driven and meaning-oriented data exchange.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Semantic Communications</h4>
+                        <p>Extracting and transmitting the core meaning of information to drastically optimize bandwidth usage.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M10 10h8m-8 4h4"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Holographic Type Communications</h4>
+                        <p>Enabling immersive, multi-sensory 3D holographic experiences over ultra-high-speed networks.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>uRLLC/hRLLC</h4>
+                        <p>Ultra-reliable and low-latency communications essential for mission-critical industrial control.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>In-Network Computing</h4>
+                        <p>Offloading computation tasks directly to network switches to reduce latency and server load.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="14" width="20" height="8" rx="2"/><circle cx="12" cy="8" r="4"/><path d="M12 14v-2"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Agentic Communication Networks</h4>
+                        <p>Empowering autonomous network entities to dynamically negotiate, route, and manage communication resources.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="5" cy="6" r="3"/><path d="M10.5 9.5 7 7m6.5 2.5 3.5-2.5"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Intelligent Digital Twins</h4>
+                        <p>Creating real-time, data-driven virtual replicas of physical network infrastructures for monitoring and precise optimization.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Intelligent Industrial Communications</h4>
+                        <p>Robust, adaptive, and secure networking solutions tailored for automated manufacturing and industrial control systems.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Distributed Intelligence and Orchestration</h4>
+                        <p>Decentralized control frameworks and algorithms designed for collaborative and scalable network management.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Autonomous Communications and Coordination</h4>
+                        <p>Self-managing network elements that coordinate efficiently based on automated protocols without human intervention.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Self-Organized and Autonomous Networks</h4>
+                        <p>Advanced network architectures fully capable of dynamic self-configuration, self-healing, and self-optimization.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Integrated Sensing and Communications</h4>
+                        <p>Combining high-precision environmental sensing and high-speed data transmission within a unified waveform.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22v-4"/><path d="M12 14a4 4 0 0 0-4-4"/><path d="M12 14a4 4 0 0 1 4-4"/><path d="M12 10a8 8 0 0 0-8-8"/><path d="M12 10a8 8 0 0 1 8-8"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Network Calculus</h4>
+                        <p>Rigorous mathematical frameworks for establishing deterministic performance bounds in queuing networks.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="3 3 3 21 21 21"/><path d="M3 15l5-5 4 4 9-9"/></svg>
+                    </div>
+                </article>
+
+                <article class="cat-small-card">
+                    <div class="card-text-content">
+                        <h4>Multiplexing Theory</h4>
+                        <p>Advanced theoretical models for efficiently sharing network resources among diverse traffic types.</p>
+                    </div>
+                    <div class="card-icon-right">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="4" y1="4" x2="10" y2="12"/><line x1="4" y1="20" x2="10" y2="12"/><line x1="10" y1="12" x2="20" y2="12"/></svg>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- View 2: Compact Tree View -->
+        <div id="tree-view" class="view-section">
             <div class="tree-wrapper">
                 <div class="tree-axis"></div>
                 <div class="tree-top-icon">FanLab Research Map</div>
@@ -565,102 +585,6 @@
                                 </div>
                                 <h4>Novel Information Theory</h4>
                             </div>
-                            <div class="research-tags">
-                                <span class="rtag">Multiplexing Theory</span>
-                                <span class="rtag">Qualitative Communications</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- View 2: Beautified Category View -->
-        <div id="category-view" class="view-section">
-            <div class="category-grid">
-                
-                <!-- Card 1 -->
-                <div class="cat-card">
-                    <div class="cat-card-header">
-                        <div class="cat-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-                        </div>
-                        <h3>5G/6G/7G Systems</h3>
-                    </div>
-                    <div class="cat-card-body">
-                        <div class="cat-section">
-                            <h4>Mission-Critical & Emerging Connectivity</h4>
-                            <div class="research-tags">
-                                <span class="rtag">Holographic Type Communications</span>
-                                <span class="rtag">uRLLC / hRLLC</span>
-                                <span class="rtag">Intelligent Industrial Communications</span>
-                            </div>
-                        </div>
-                        <div class="cat-section">
-                            <h4>Architecture & Capabilities</h4>
-                            <div class="research-tags">
-                                <span class="rtag">Integrated Sensing and Communications</span>
-                                <span class="rtag">Next-Generation Routing and Forwarding</span>
-                                <span class="rtag">Next-Generation QoS</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="cat-card">
-                    <div class="cat-card-header">
-                        <div class="cat-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
-                        </div>
-                        <h3>AI Networks</h3>
-                    </div>
-                    <div class="cat-card-body">
-                        <div class="cat-section">
-                            <h4>Network for AI</h4>
-                            <div class="research-tags">
-                                <span class="rtag">Lossless Communication and Network</span>
-                                <span class="rtag">In-Network Computing</span>
-                            </div>
-                        </div>
-                        <div class="cat-section">
-                            <h4>AI for Network</h4>
-                            <div class="research-tags">
-                                <span class="rtag">Self-Organized and Autonomous Networks</span>
-                                <span class="rtag">Distributed Intelligence and Orchestration</span>
-                                <span class="rtag">Intelligent Digital Twins</span>
-                            </div>
-                        </div>
-                        <div class="cat-section">
-                            <h4>AI-Native Paradigms</h4>
-                            <div class="research-tags">
-                                <span class="rtag">Semantic Communications</span>
-                                <span class="rtag">Agentic Communication Networks</span>
-                                <span class="rtag">Autonomous Communications and Coordination</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="cat-card">
-                    <div class="cat-card-header">
-                        <div class="cat-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                        </div>
-                        <h3>Network Theory</h3>
-                    </div>
-                    <div class="cat-card-body">
-                        <div class="cat-section">
-                            <h4>Deterministic Bounds</h4>
-                            <div class="research-tags">
-                                <span class="rtag">Network Calculus</span>
-                                <span class="rtag">Performance-Guaranteed Networks</span>
-                            </div>
-                        </div>
-                        <div class="cat-section">
-                            <h4>Novel Information Theory</h4>
                             <div class="research-tags">
                                 <span class="rtag">Multiplexing Theory</span>
                                 <span class="rtag">Qualitative Communications</span>
