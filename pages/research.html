@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Our Research at FanLab">
+    <meta name="description" content="Research Directions at FanLab">
     <title>Research - FanLab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/unified.css">
-
+    
     <style>
         /* ── Reset & Base ── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,9 +20,10 @@
             --white:      #ffffff;
             --muted:      #6b6b7a;
             --border:     #e2ddd8;
-            --shadow-sm:  0 2px 8px rgba(26,26,46,.07);
-            --shadow-md:  0 8px 30px rgba(26,26,46,.12);
-            --shadow-lg:  0 20px 60px rgba(26,26,46,.18);
+            --theme-purple: #7e22ce;
+            --theme-light: #faf5ff;
+            --shadow-sm:  0 2px 8px rgba(26,26,46,.04);
+            --shadow-md:  0 8px 24px rgba(26,26,46,.08);
             --font-serif: 'Libre Baskerville', Georgia, serif;
             --font-sans:  'DM Sans', system-ui, sans-serif;
             --radius:     12px;
@@ -31,9 +31,9 @@
 
         body {
             font-family: var(--font-sans);
-            background: var(--sand);
+            background: var(--white);
             color: var(--ink);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* ── Navbar ── */
@@ -70,181 +70,352 @@
         }
         .nav-menu a:hover, .nav-menu a.active { color: var(--white); }
         .nav-menu a.active { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-        .menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        /* ── Hero ── */
-        .hero {
-            background: var(--ink);
-            padding: 70px 2rem 50px; /* Reduced padding to match index */
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: 
-                radial-gradient(ellipse 60% 60% at 20% 50%, rgba(192,57,43,.18) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 50% at 80% 30%, rgba(212,168,67,.12) 0%, transparent 70%);
-        }
-        .hero-content { position: relative; z-index: 1; }
-        .hero-rule {
-            width: 50px; height: 3px;
-            background: var(--gold);
-            margin: 1.2rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* ── Research Projects ── */
-        .research-projects {
-            padding: 80px 2rem;
-        }
-        .container {
+        /* ── Main Section ── */
+        .research-section {
+            padding: 40px 2rem 80px;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            color: var(--ink);
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
 
-        /* Compact Project Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-            gap: 1.5rem;
+        /* ── Tabs ── */
+        .tabs-container {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
         }
-
-        .project-card {
+        
+        .tab-btn {
+            padding: 12px 32px;
+            background: var(--white);
+            border: 1px solid var(--theme-purple);
+            border-bottom: none;
+            color: var(--theme-purple);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            gap: 1.5rem;
+            gap: 8px;
         }
 
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--gold);
+        .tab-btn:first-child { border-radius: 8px 0 0 0; }
+        .tab-btn:last-child { border-radius: 0 8px 0 0; border-left: none; }
+
+        .tab-btn.active {
+            background: var(--theme-purple);
+            color: var(--white);
         }
 
-        .project-content {
-            flex: 1;
-            min-width: 0;
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px 6px 0;
+            border-style: solid;
+            border-color: var(--theme-purple) transparent transparent transparent;
+            z-index: 10;
         }
 
-        .project-content h3 {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--ink);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
+        .view-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .view-section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .project-content p {
-            font-size: 0.9rem;
+        /* ── Common Tags ── */
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .rtag {
+            font-size: 0.8rem;
+            background: var(--sand);
+            border: 1px solid #e5e5e5;
+            padding: 4px 12px;
+            border-radius: 16px;
             color: var(--muted);
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            display: inline-block;
+            line-height: 1.4;
+            transition: all 0.2s;
+        }
+        .rtag:hover {
+            background: var(--white);
+            border-color: var(--theme-purple);
+            color: var(--theme-purple);
         }
 
-        .project-image {
-            width: 110px;
-            height: 90px;
-            flex-shrink: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            background: var(--ink);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        /* ── Compact Tree View ── */
+        .tree-wrapper {
+            position: relative;
+            padding: 60px 0 20px; 
+        }
+
+        .tree-axis {
+            position: absolute;
+            left: 50%;
+            top: 38px; /* Starts just below the pill */
+            bottom: 0;
+            width: 1px;
+            background-color: var(--border);
+            transform: translateX(-50%);
+        }
+
+        .tree-top-icon {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background: var(--white);
+            border: 2px solid var(--theme-purple);
+            border-radius: 20px; /* Pill shape */
+            padding: 6px 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .project-image svg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image svg {
-            transform: scale(1.08);
-        }
-
-        /* ── Research Focus ── */
-        .research-focus {
-            background-color: var(--white);
-            padding: 80px 2rem;
-            border-top: 1px solid var(--border);
-        }
-        .focus-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        .focus-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--sand);
-            border-radius: var(--radius);
-        }
-        .focus-card h3 {
-            font-family: var(--font-serif);
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        .focus-card p {
+            color: var(--theme-purple);
             font-size: 0.95rem;
-            color: var(--muted);
+            font-weight: bold;
+            font-family: var(--font-serif);
+            z-index: 2;
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* ── Footer ── */
-        .footer {
-            background: var(--ink);
-            color: rgba(255,255,255,.65);
-            padding: 60px 2rem 30px;
+        .tree-node {
+            position: relative;
+            width: 50%;
+            padding-bottom: 20px;
         }
-        .footer-content {
-            max-width: 1200px; margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 3rem;
-            padding-bottom: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,.1);
+
+        .tree-node.left { left: 0; padding-right: 40px; }
+        .tree-node.right { left: 50%; padding-left: 40px; }
+
+        /* Safe Staggering - Adjusted for tighter layout */
+        @media (min-width: 769px) {
+            .tree-node.node-2 { margin-top: -120px; } /* Pull AI Networks up */
+            .tree-node.node-3 { margin-top: -280px; } /* Pull Network Theory way up to tuck under node 1 */
         }
-        .footer-section h4 {
+
+        .tree-node::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            width: 9px;
+            height: 9px;
+            background-color: var(--theme-purple);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .tree-node.left::after { right: -4.5px; }
+        .tree-node.right::after { left: -4.5px; }
+
+        .node-header {
+            position: relative;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .node-header h3 {
             font-family: var(--font-serif);
-            color: var(--white); margin-bottom: 1rem; font-size: 1rem;
+            font-size: 1.4rem;
+            color: var(--theme-purple);
+            font-weight: 600;
         }
-        .footer-section p, .footer-section li { font-size: .88rem; line-height: 1.8; }
-        .footer-section ul { list-style: none; }
-        .footer-section a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
-        .footer-section a:hover { color: var(--gold); }
-        .footer-bottom {
-            max-width: 1200px; margin: 2rem auto 0;
-            text-align: center; font-size: .8rem; color: rgba(255,255,255,.3);
+
+        .tree-node.left .node-header { text-align: right; }
+        .tree-node.right .node-header { text-align: left; }
+
+        .node-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            background-color: var(--theme-purple);
+            opacity: 0.4;
         }
+        .tree-node.left .node-header::after { right: -40px; left: 0; }
+        .tree-node.right .node-header::after { left: -40px; right: 0; }
+
+        .node-body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .tree-node.left .node-body { align-items: flex-end; }
+        .tree-node.right .node-body { align-items: flex-start; }
+
+        .sub-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            text-align: left;
+        }
+
+        .sub-card:hover {
+            border-color: var(--theme-purple);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .sub-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .sub-card-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: var(--theme-light);
+            color: var(--theme-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sub-card-icon svg { width: 18px; height: 18px; }
+
+        .sub-card h4 {
+            font-size: 1.05rem;
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* ── Beautified Category View ── */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            padding-top: 20px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cat-card-header {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cat-card:nth-child(1) .cat-card-header {
+            background: linear-gradient(to right, #fff5f5, #ffffff);
+            border-left: 4px solid var(--accent);
+        }
+        .cat-card:nth-child(1) .cat-icon { color: var(--accent); background: #fde8e8; }
+
+        .cat-card:nth-child(2) .cat-card-header {
+            background: linear-gradient(to right, #fffbf0, #ffffff);
+            border-left: 4px solid var(--gold);
+        }
+        .cat-card:nth-child(2) .cat-icon { color: #b8860b; background: #fef5d9; }
+
+        .cat-card:nth-child(3) .cat-card-header {
+            background: linear-gradient(to right, #faf5ff, #ffffff);
+            border-left: 4px solid var(--theme-purple);
+        }
+        .cat-card:nth-child(3) .cat-icon { color: var(--theme-purple); background: #f3e8ff; }
+
+        .cat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cat-icon svg { width: 22px; height: 22px; }
+
+        .cat-card-header h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .cat-card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            flex: 1;
+            background: var(--sand);
+        }
+
+        .cat-section h4 {
+            font-size: 0.95rem;
+            color: var(--ink);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .cat-section h4::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .cat-card:nth-child(1) .cat-section h4::before { background: var(--accent); }
+        .cat-card:nth-child(2) .cat-section h4::before { background: var(--gold); }
+        .cat-card:nth-child(3) .cat-section h4::before { background: var(--theme-purple); }
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .nav-menu { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--ink); padding: 1rem 2rem; }
-            .nav-menu.open { display: flex; }
-            .project-grid { grid-template-columns: 1fr; }
+            .tree-axis { left: 16px; top: 40px; }
+            .tree-top-icon { left: 16px; top: 0; padding: 6px 16px; font-size: 0.85rem; }
+            .tree-node { width: 100%; padding-left: 40px !important; padding-right: 0 !important; left: 0 !important; margin-top: 0 !important; margin-bottom: 30px; }
+            .tree-node::after { left: 11.5px !important; }
+            .tree-node.left .node-header { text-align: left; }
+            .tree-node.left .node-header::after { left: -40px; right: 0; }
+            .tree-node.right .node-header::after { left: -40px; right: 0; }
+            .tree-node.left .node-body, .tree-node.right .node-body { align-items: flex-start; }
+            .sub-card { max-width: 100%; }
         }
     </style>
 </head>
@@ -256,8 +427,7 @@
                 <h1>FanLab</h1>
                 <p class="tagline">Future Advanced Network Lab</p>
             </div>
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <ul class="nav-menu" id="navMenu">
+            <ul class="nav-menu">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="research.html" class="active">Research</a></li>
                 <li><a href="team.html">Team</a></li>
@@ -267,164 +437,250 @@
         </div>
     </nav>
 
-
     <!-- Main Content -->
-    <main>
-        <section class="research-projects">
-            <div class="container">
-                <h2 class="section-title">Current Directions</h2>
-                
-                <div class="project-grid">
-                    <!-- Project 1: 6G Intelligent Wireless Communication -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>6G Intelligent Wireless Communication Networks</h3>
-                            <p>Focusing on Integrated Sensing and Communication (ISAC), wireless resource allocation, system performance optimization, and high-precision wireless positioning.</p>
-                        </div>
-                        <div class="project-image">
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <polygon points="55,15 75,28 75,52 55,65 35,52 35,28" fill="none" stroke="#c0392b" stroke-width="2"/>
-                                <polygon points="55,25 65,33 65,47 55,55 45,47 45,33" fill="#d4a843" opacity="0.8"/>
-                                <path d="M55 65 L55 80 M35 52 L20 60 M75 52 L90 60 M35 28 L20 20 M75 28 L90 20 M55 15 L55 5" stroke="#ffffff" stroke-width="1.5" opacity="0.4"/>
-                            </svg>
-                        </div>
-                    </article>
+    <main class="research-section">
+        
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchTab('tree-view', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+                Tree
+            </button>
+            <button class="tab-btn" onclick="switchTab('category-view', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Category
+            </button>
+        </div>
 
-                    <!-- Project 2: URLLC for UAV and IIoT -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>URLLC for UAV and Industrial IoT</h3>
-                            <p>Developing Ultra-Reliable and Low-Latency Communications (URLLC) tailored for unmanned aerial vehicles (UAVs) and the Industrial Internet of Things (IIoT).</p>
-                        </div>
-                        <div class="project-image">
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <path d="M40 60 L40 30 L55 20 L70 30 L70 60 Z" fill="none" stroke="#d4a843" stroke-width="2"/>
-                                <rect x="45" y="45" width="20" height="15" fill="#c0392b"/>
-                                <circle cx="55" cy="35" r="4" fill="#ffffff" opacity="0.8"/>
-                                <path d="M20 70 L90 70" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
-                                <circle cx="30" cy="70" r="3" fill="#d4a843"/>
-                                <circle cx="55" cy="70" r="3" fill="#d4a843"/>
-                                <circle cx="80" cy="70" r="3" fill="#d4a843"/>
-                            </svg>
-                        </div>
-                    </article>
+        <!-- View 1: Compact Tree View -->
+        <div id="tree-view" class="view-section active">
+            <div class="tree-wrapper">
+                <div class="tree-axis"></div>
+                <div class="tree-top-icon">FanLab Research Map</div>
 
-                    <!-- Project 3: Wi-Fi Protocols and Multi-AP Coordination -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Wi-Fi Protocols & Multi-AP Coordination</h3>
-                            <p>Researching advanced Wi-Fi protocols and multi-access point coordination mechanisms to achieve seamless, high-throughput, and interference-free local connectivity.</p>
+                <!-- Node 1 (Left) -->
+                <div class="tree-node left node-1">
+                    <div class="node-header">
+                        <h3>5G/6G/7G Systems</h3>
+                    </div>
+                    <div class="node-body">
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                </div>
+                                <h4>Extreme Scenarios & Applications</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Holographic Type Communications</span>
+                                <span class="rtag">uRLLC / hRLLC</span>
+                                <span class="rtag">Intelligent Industrial Communications</span>
+                            </div>
                         </div>
-                        <div class="project-image">
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <circle cx="55" cy="45" r="25" fill="none" stroke="#c0392b" stroke-width="2"/>
-                                <ellipse cx="55" cy="45" rx="10" ry="25" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.8"/>
-                                <path d="M30 45 L80 45" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                                <path d="M40 25 L70 65 M40 65 L70 25" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
-                                <circle cx="55" cy="45" r="3" fill="#ffffff"/>
-                            </svg>
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                </div>
+                                <h4>Architecture & Native Capabilities</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Integrated Sensing and Communications</span>
+                                <span class="rtag">Next-Generation Routing and Forwarding</span>
+                                <span class="rtag">Next-Generation QoS</span>
+                            </div>
                         </div>
-                    </article>
-
-                    <!-- Project 4: AI Infrastructure -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>AI Infrastructure Architecture & Protocols</h3>
-                            <p>Designing robust architecture and protocols for AI infrastructure, including advanced load balancing, congestion control, and adaptive routing mechanisms.</p>
-                        </div>
-                        <div class="project-image">
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <rect x="35" y="25" width="40" height="40" rx="4" fill="none" stroke="#d4a843" stroke-width="2"/>
-                                <rect x="43" y="33" width="24" height="24" rx="2" fill="#c0392b"/>
-                                <path d="M35 35h-10M35 45h-10M35 55h-10M75 35h10M75 45h10M75 55h10M45 25v-10M55 25v-10M65 25v-10M45 65v10M55 65v10M65 65v10" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
-                            </svg>
-                        </div>
-                    </article>
-
-                    <!-- Project 5: Programmable Data Planes -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Programmable Data Planes in SDN & DCN</h3>
-                            <p>Exploring programmable data planes, in-network computation, and in-band telemetry within Software-Defined Networking (SDN) and Data Center Networks (DCN).</p>
-                        </div>
-                        <div class="project-image">
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <circle cx="55" cy="45" r="12" fill="#c0392b"/>
-                                <circle cx="25" cy="25" r="6" fill="#d4a843"/>
-                                <circle cx="85" cy="25" r="6" fill="#d4a843"/>
-                                <circle cx="25" cy="65" r="6" fill="#d4a843"/>
-                                <circle cx="85" cy="65" r="6" fill="#d4a843"/>
-                                <line x1="30" y1="29" x2="48" y2="40" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-dasharray="2 2"/>
-                                <line x1="80" y1="29" x2="62" y2="40" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-dasharray="2 2"/>
-                                <line x1="30" y1="61" x2="48" y2="50" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-dasharray="2 2"/>
-                                <line x1="80" y1="61" x2="62" y2="50" stroke="#ffffff" stroke-width="1.5" opacity="0.4" stroke-dasharray="2 2"/>
-                            </svg>
-                        </div>
-                    </article>
-                    
-                    <!-- Project 6: Satellite Network (Kept to maintain grid balance) -->
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Satellite & Space-Air-Ground Networks</h3>
-                            <p>Designing low-earth orbit (LEO) satellite constellations and space-air-ground integrated networks to achieve seamless global coverage and connectivity.</p>
-                        </div>
-                        <div class="project-image">
-                            <svg viewBox="0 0 110 90" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="110" height="90" fill="#1a1a2e"/>
-                                <path d="M-10 90 Q 55 40 120 90" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3" stroke-dasharray="4 4"/>
-                                <circle cx="55" cy="45" r="6" fill="#d4a843"/>
-                                <rect x="35" y="42" width="12" height="6" fill="#c0392b"/>
-                                <rect x="63" y="42" width="12" height="6" fill="#c0392b"/>
-                                <path d="M55 51 L45 75 M55 51 L65 75" stroke="#ffffff" stroke-width="1" opacity="0.5"/>
-                            </svg>
-                        </div>
-                    </article>
+                    </div>
                 </div>
+
+                <!-- Node 2 (Right) -->
+                <div class="tree-node right node-2">
+                    <div class="node-header">
+                        <h3>AI Networks</h3>
+                    </div>
+                    <div class="node-body">
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                </div>
+                                <h4>Network for AI (Infrastructure)</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Lossless Communication and Network</span>
+                                <span class="rtag">In-Network Computing</span>
+                            </div>
+                        </div>
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                </div>
+                                <h4>AI for Network (Operations)</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Self-Organized and Autonomous Networks</span>
+                                <span class="rtag">Distributed Intelligence and Orchestration</span>
+                                <span class="rtag">Intelligent Digital Twins</span>
+                            </div>
+                        </div>
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </div>
+                                <h4>AI-Native Paradigms</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Semantic Communications</span>
+                                <span class="rtag">Agentic Communication Networks</span>
+                                <span class="rtag">Autonomous Communications and Coordination</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Node 3 (Left) -->
+                <div class="tree-node left node-3">
+                    <div class="node-header">
+                        <h3>Fundamental Network Theory</h3>
+                    </div>
+                    <div class="node-body">
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 3 3 21 21 21"></polyline><path d="M7 16l4-4 4 4 6-6"></path><line x1="3" y1="8" x2="21" y2="8" stroke-dasharray="4 4"></line></svg>
+                                </div>
+                                <h4>Deterministic & Performance Bounds</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Network Calculus</span>
+                                <span class="rtag">Performance-Guaranteed Networks</span>
+                            </div>
+                        </div>
+                        <div class="sub-card">
+                            <div class="sub-card-header">
+                                <div class="sub-card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                                </div>
+                                <h4>Novel Information Theory</h4>
+                            </div>
+                            <div class="research-tags">
+                                <span class="rtag">Multiplexing Theory</span>
+                                <span class="rtag">Qualitative Communications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
+
+        <!-- View 2: Beautified Category View -->
+        <div id="category-view" class="view-section">
+            <div class="category-grid">
+                
+                <!-- Card 1 -->
+                <div class="cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                        </div>
+                        <h3>5G/6G/7G Systems</h3>
+                    </div>
+                    <div class="cat-card-body">
+                        <div class="cat-section">
+                            <h4>Extreme Scenarios</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Holographic Type Communications</span>
+                                <span class="rtag">uRLLC / hRLLC</span>
+                                <span class="rtag">Intelligent Industrial Communications</span>
+                            </div>
+                        </div>
+                        <div class="cat-section">
+                            <h4>Architecture & Capabilities</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Integrated Sensing and Communications</span>
+                                <span class="rtag">Next-Generation Routing and Forwarding</span>
+                                <span class="rtag">Next-Generation QoS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                        </div>
+                        <h3>AI Networks</h3>
+                    </div>
+                    <div class="cat-card-body">
+                        <div class="cat-section">
+                            <h4>Network for AI</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Lossless Communication and Network</span>
+                                <span class="rtag">In-Network Computing</span>
+                            </div>
+                        </div>
+                        <div class="cat-section">
+                            <h4>AI for Network</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Self-Organized and Autonomous Networks</span>
+                                <span class="rtag">Distributed Intelligence and Orchestration</span>
+                                <span class="rtag">Intelligent Digital Twins</span>
+                            </div>
+                        </div>
+                        <div class="cat-section">
+                            <h4>AI-Native Paradigms</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Semantic Communications</span>
+                                <span class="rtag">Agentic Communication Networks</span>
+                                <span class="rtag">Autonomous Communications and Coordination</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="cat-card">
+                    <div class="cat-card-header">
+                        <div class="cat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <h3>Network Theory</h3>
+                    </div>
+                    <div class="cat-card-body">
+                        <div class="cat-section">
+                            <h4>Deterministic Bounds</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Network Calculus</span>
+                                <span class="rtag">Performance-Guaranteed Networks</span>
+                            </div>
+                        </div>
+                        <div class="cat-section">
+                            <h4>Novel Information Theory</h4>
+                            <div class="research-tags">
+                                <span class="rtag">Multiplexing Theory</span>
+                                <span class="rtag">Qualitative Communications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About Us</h4>
-                    <p>An academic research laboratory dedicated to advanced network research and technological Future Advanced Network Lab at Southeast University.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Lab</a></li>
-                        <li><a href="research.html">Research Projects</a></li>
-                        <li><a href="team.html">Team Members</a></li>
-                        <li><a href="publications.html">Publications</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Chunxue XU<br>
-                    <a href="mailto:xuchunxue@seu.edu.cn" style="color: inherit; text-decoration: none;">xuchunxue@seu.edu.cn</a></p>
-                    <p style="margin-top: 0.5rem;">Liberal Arts Building, Jiulonghu Campus<br>Southeast University, Nanjing</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 <span style="color: var(--gold);">FanLab</span>, Southeast University. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Mobile menu toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('navMenu').classList.toggle('open');
-        });
+        function switchTab(viewId, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
+            btnElement.classList.add('active');
+            document.getElementById(viewId).classList.add('active');
+        }
     </script>
 </body>
 </html>
